@@ -103,6 +103,24 @@ const HERO_DATA = [
                 label: "영웅 초월 3",
                 transcript: "원하는 건, 이것 뿐인가?",
                 audio: "ondal/dark_ondal (5).mp3"
+            },
+                        {
+                id: "v_auto_1771075975",
+                label: "영웅 각성 1",
+                transcript: "더 하라고?",
+                audio: "ondal/dark_ondal (6).mp3"
+            },
+                        {
+                id: "v_auto_1771076039",
+                label: "영웅 각성 1",
+                transcript: "하, 어디까지 바라는 겐가?",
+                audio: "ondal/dark_ondal (7).mp3"
+            },
+                        {
+                id: "v_auto_1771076086",
+                label: "영웅 각성 1",
+                transcript: "하, 욕심도 많군. 그래 보이긴 해.",
+                audio: "ondal/dark_ondal (8).mp3"
             }
         ]
     },
