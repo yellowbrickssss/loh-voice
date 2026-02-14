@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Room - Lord Of Heroes</title>
+    <style>
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Thin.woff2') format('woff2');font-weight:100;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraLight.woff2') format('woff2');font-weight:200;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2') format('woff2');font-weight:300;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Regular.woff2') format('woff2');font-weight:400;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2') format('woff2');font-weight:500;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-SemiBold.woff2') format('woff2');font-weight:600;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
+@font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Heavy.woff2') format('woff2');font-weight:900;font-display:swap}
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+
+        :root {
+            /* Palette: Deep Night Sky & Emotional Blue */
+            --bg-deep: #080b12;
+            --bg-navy: #131b2e;
+            
+            --accent-primary: #89c4f4; /* Softer Sky Blue */
+            --accent-glow: rgba(137, 196, 244, 0.4);
+            --accent-line: rgba(137, 196, 244, 0.2);
+            
+            --text-main: #f0f4f8;
+            --text-muted: #94a3b8;
+            
+            /* Glassmorphism: Thin Sheet Style */
+            --glass-surface: linear-gradient(
+                120deg, 
+                rgba(255, 255, 255, 0.03) 0%, 
+                rgba(255, 255, 255, 0.01) 100%
+            );
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --glass-highlight: rgba(255, 255, 255, 0.15);
+            
+            --hex-width: 90px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Suit', 'Noto Sans KR', sans-serif;
+            background-color: var(--bg-deep);
+            background: radial-gradient(circle at 50% -20%, #1a2744 0%, var(--bg-deep) 60%);
+            color: var(--text-main);
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Background Stars/Particles (Subtle) */
+        .stars {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background-image: 
+                radial-gradient(1px 1px at 20% 30%, rgba(255,255,255,0.3) 50%, transparent 100%),
+                radial-gradient(1px 1px at 50% 10%, rgba(255,255,255,0.2) 50%, transparent 100%),
+                radial-gradient(1.5px 1.5px at 80% 40%, rgba(255,255,255,0.25) 50%, transparent 100%),
+                radial-gradient(1px 1px at 10% 80%, rgba(255,255,255,0.2) 50%, transparent 100%),
+                radial-gradient(2px 2px at 90% 90%, rgba(255,255,255,0.15) 50%, transparent 100%);
+            z-index: 0;
+            opacity: 0.6;
+        }
+
+        .app-container {
+            width: 100%;
+            height: 100%;
+            max-width: 1800px;
+            display: flex;
+            padding: 60px;
+            position: relative;
+            top: 10px;
+            z-index: 1;
+        }
+
+        /* 
+            1. Left: Hero Selection (Regular Hexagons)
+        */
+        .hero-list {
+            flex: 0 0 140px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+            padding-right: 30px;
+            border-right: 1px solid rgba(255,255,255,0.03);
+            overflow-y: auto;
+            scrollbar-width: none;
+        }
+        .hero-list::-webkit-scrollbar { display: none; }
+        
+        .hero-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36px;
+            height: 36px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            background: rgba(137,196,244,0.12);
+            border: 1px solid rgba(137,196,244,0.28);
+            border-radius: 50%;
+            box-shadow: 0 6px 14px rgba(0,0,0,0.35);
+            z-index: 5;
+        }
+        .hero-arrow svg {
+            width: 18px;
+            height: 18px;
+            fill: #cfe6f9;
+        }
+        .hero-arrow-left { left: 4px; }
+        .hero-arrow-right { right: 4px; }
+
+        .hex-container {
+            width: var(--hex-width);
+            height: calc(var(--hex-width) * 0.866); /* Regular Hexagon Ratio (sqrt(3)/2) */
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease, filter 0.3s ease;
+            filter: drop-shadow(0 0 0 rgba(137, 196, 244, 0));
+        }
+
+        .hex-container:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px var(--accent-glow));
+        }
+        
+        .hex-container.active {
+            filter: drop-shadow(0 0 12px var(--accent-glow));
+        }
+
+        .hex-shape {
+            width: 100%;
+            height: 100%;
+            background: #1e293b;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        /* Thin border overlay for Hexagon */
+        .hex-shape::after {
+            content: '';
+            position: absolute;
+            inset: 1px;
+            background: var(--bg-navy); /* Inner background */
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            z-index: 1;
+        }
+
+        .hex-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 2;
+            clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .hex-container:hover .hex-img,
+        .hex-container.active .hex-img {
+            opacity: 1;
+        }
+        
+        /* Active Indicator (Thin line around hex) */
+        .hex-container.active .hex-shape {
+            background: var(--accent-primary);
+        }
+
+        /* 
+            2. Middle: Voice List
+        */
+        .voice-list-section {
+            flex: 0 0 400px;
+            margin-left: 60px; /* Generous spacing */
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+            padding-right: 10px;
+        }
+        .voice-list-section::-webkit-scrollbar {
+            width: 4px;
+        }
+        .voice-list-section::-webkit-scrollbar-thumb {
+            background: rgba(255,255,255,0.1);
+            border-radius: 10px;
+        }
+        
+        .voice-scroll {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .section-title {
+            font-size: 0.85rem;
+            letter-spacing: 2px;
+            color: var(--accent-primary);
+            margin-bottom: 24px;
+            opacity: 0.8;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .voice-item {
+            position: relative;
+            padding: 16px 24px;
+            margin-bottom: 12px;
+            background: var(--glass-surface);
+            border: 1px solid var(--glass-border);
+            /* backdrop-filter: blur(4px); Removed for "thin sheet" feel, or kept very low */
+            border-radius: 2px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Top highlight line for "Sheet" effect */
+        .voice-item::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            opacity: 0.5;
+        }
+
+        .voice-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+
+        .voice-item.active {
+            background: linear-gradient(90deg, rgba(137, 196, 244, 0.08), transparent);
+            border-left: 2px solid var(--accent-primary);
+        }
+
+        .voice-label {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            font-weight: 300;
+        }
+        
+        .play-icon {
+            font-size: 0.7rem;
+            margin-right: 12px;
+            color: var(--accent-primary);
+            opacity: 0.7;
+        }
+
+        /* 
+            3. Right: Transcript / Interaction
+        */
+        .transcript-section {
+            flex: 1;
+            margin-left: 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Floating Sheet for Quote */
+        .quote-sheet {
+            background: rgba(20, 30, 50, 0.3); /* Very transparent */
+            border: 1px solid rgba(137, 196, 244, 0.1);
+            padding: 50px;
+            border-radius: 4px;
+            position: relative;
+            max-width: 700px;
+            /* Thin glow shadow */
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Decorative thin corners */
+        .corner-deco {
+            position: absolute;
+            width: 10px; height: 10px;
+            border: 1px solid var(--accent-primary);
+            opacity: 0.5;
+            transition: all 0.5s ease;
+        }
+        .c-tl { top: -1px; left: -1px; border-bottom: none; border-right: none; }
+        .c-tr { top: -1px; right: -1px; border-bottom: none; border-left: none; }
+        .c-bl { bottom: -1px; left: -1px; border-top: none; border-right: none; }
+        .c-br { bottom: -1px; right: -1px; border-top: none; border-left: none; }
+
+        .quote-sheet:hover .corner-deco {
+            width: 20px; height: 20px;
+            opacity: 1;
+        }
+
+        .char-title {
+            font-size: 2.5rem;
+            font-weight: 100;
+            margin-bottom: 30px;
+            color: var(--text-main);
+            letter-spacing: -1px;
+            background: linear-gradient(180deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .quote-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            font-weight: 300;
+            color: #e2e8f0;
+            position: relative;
+            padding-left: 20px;
+            border-left: 1px solid var(--accent-line);
+        }
+
+        .quote-meta {
+            margin-top: 30px;
+            font-size: 0.85rem;
+            color: var(--accent-primary);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            opacity: 0.8;
+        }
+
+        .v-divider {
+            flex: 0 0 1px;
+            align-self: stretch;
+            background: linear-gradient(180deg, rgba(137,196,244,0), rgba(137,196,244,0.35), rgba(137,196,244,0));
+            box-shadow: 0 0 12px rgba(137,196,244,0.12);
+            opacity: 0.9;
+            margin: 0 40px;
+        }
+
+        .brand-logo {
+            position: fixed;
+            top: 32px;
+            right: 42px;
+            width: 160px;
+            max-width: 22vw;
+            object-fit: contain;
+            filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5));
+            opacity: 0.95;
+            z-index: 10;
+        }
+
+        .intro-overlay{position:fixed;inset:0;background:#000;display:flex;align-items:center;justify-content:center;z-index:100;cursor:pointer}
+        .intro-container{display:flex;flex-direction:column;align-items:center;gap:14px;text-align:center}
+        .intro-logo{width:240px;max-width:60vw;animation:blink 1.4s ease-in-out infinite}
+        .intro-text{font-family:'Suit',sans-serif;font-size:14px;color:#e6e6e6;opacity:.9}
+        @keyframes blink{0%{opacity:.5}50%{opacity:1}100%{opacity:.5}}
+
+        .music-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 16px;
+            background: linear-gradient(180deg, rgba(20,28,44,0.7), rgba(20,28,44,0.35));
+            border-bottom: 1px solid rgba(137,196,244,0.12);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.25);
+            z-index: 9;
+        }
+        .center-group{display:flex;align-items:center;gap:12px;margin:0 auto}
+        .right-group{margin-left:auto}
+        .mb-btn {
+            background: rgba(137,196,244,0.08);
+            border: 1px solid rgba(137,196,244,0.16);
+            color: var(--text-main);
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .mb-btn.active {
+            background: rgba(137,196,244,0.25);
+            border-color: rgba(137,196,244,0.35);
+        }
+        .mb-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .mb-title {
+            flex: 1;
+            min-width: 0;
+            color: var(--text-main);
+            opacity: 0.9;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .icon {
+            width: 18px;
+            height: 18px;
+            fill: #cfe6f9;
+        }
+        #mbPlay .icon { display: none; }
+        #mbPlay .icon-play { display: inline; }
+        #mbPlay.playing .icon-play { display: none; }
+        #mbPlay.playing .icon-pause { display: inline; }
+        .voice-item .icon { width: 14px; height: 14px; fill: var(--accent-primary); margin-right: 12px; }
+        .voice-item .icon-pause { display: none; }
+        .voice-item.playing .icon-play { display: none; }
+        .voice-item.playing .icon-pause { display: inline; }
+        .mb-time{font-size:12px;color:#cfe6f9;opacity:.8;min-width:80px;text-align:center}
+        .mb-progress-wrap{width:320px;max-width:40vw;height:6px;background:rgba(255,255,255,0.15);border-radius:4px;cursor:pointer;position:relative}
+        .mb-progress{height:100%;background:var(--accent-primary);width:0%;border-radius:4px;transition:width .1s linear;position:relative}
+        .mb-progress::after{content:'';position:absolute;right:-5px;top:50%;transform:translateY(-50%);width:10px;height:10px;border-radius:50%;background:#fff;box-shadow:0 0 8px rgba(137,196,244,0.5)}
+        .mb-progress-wrap:hover{height:8px}
+        .music-accordion {
+            position: fixed;
+            top: 56px;
+            right: 16px;
+            width: 360px;
+            max-width: 80vw;
+            background: rgba(20,28,44,0.7);
+            border: 1px solid rgba(137,196,244,0.12);
+            border-radius: 8px;
+            box-shadow: 0 10px 24px rgba(0,0,0,0.35);
+            overflow: hidden;
+            max-height: 0;
+            transition: max-height 0.25s ease;
+            z-index: 9;
+        }
+        .music-accordion.open {
+            max-height: 50vh;
+        }
+        .music-list {
+            overflow-y: auto;
+            max-height: 50vh;
+        }
+        .music-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 12px;
+            border-bottom: 0px solid rgba(255,255,255,0.06);
+            cursor: pointer;
+        }
+        .music-item.active {
+            background: rgba(137,196,244,0.08);
+        }
+        .music-item-title {
+            flex: 1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .quote-sheet {
+            min-width: 560px;
+            min-height: 320px;
+        }
+
+        @media (hover: none) {
+            .hex-container:hover {
+                transform: none;
+                filter: drop-shadow(0 0 0 transparent);
+            }
+            .hex-container:hover .hex-img {
+                opacity: 0.7;
+            }
+        }
+
+        @media (max-width: 900px) {
+            body {
+                height: auto;
+                overflow: auto;
+            }
+            .app-container {
+                padding: 20px;
+                flex-direction: column;
+            }
+            .hero-list {
+                flex: 0 0 auto;
+                flex-direction: row;
+                align-items: center;
+                gap: 12px;
+                padding-right: 0;
+                padding-bottom: 12px;
+                border-right: none;
+                border-bottom: 1px solid rgba(255,255,255,0.06);
+                overflow-x: auto;
+                scrollbar-width: none;
+                position: relative;
+                order: 3;
+                margin-top: 12px;
+            }
+            .hero-list::-webkit-scrollbar { display: none; }
+            .hero-arrow { display: inline-flex; }
+            .hex-container {
+                width: 72px;
+                height: calc(72px * 0.866);
+            }
+            .voice-list-section {
+                margin-left: 0;
+                margin-top: 20px;
+                flex: 0 0 auto;
+                order: 2;
+                overflow: visible;
+                margin-bottom: 12px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .voice-scroll {
+                max-height: 45vh;
+                overflow-y: auto;
+                padding-right: 10px;
+            }
+            .transcript-section {
+                margin-left: 0;
+                margin-top: 20px;
+                order: 0;
+            }
+            .quote-sheet {
+                min-width: unset;
+                min-height: 260px;
+            }
+            .brand-logo {
+                width: 120px;
+                max-width: 30vw;
+                top: 12px;
+                right: 12px;
+            }
+            .music-bar {height:52px;padding:8px 12px}
+            .music-accordion {
+                top: 52px;
+                right: 12px;
+                width: 320px;
+            }
+            .mb-progress-wrap { display: none; }
+            .mb-time { display: none; }
+            .v-divider {
+                flex: 0 0 auto;
+                height: 1px;
+                width: 100%;
+                margin: 20px 0;
+                background: linear-gradient(90deg, rgba(137,196,244,0), rgba(137,196,244,0.35), rgba(137,196,244,0));
+                box-shadow: 0 0 10px rgba(137,196,244,0.1);
+                order: 1;
+            }
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="stars"></div>
+    <img class="brand-logo" src="lord%20of%20heros.png" alt="Lord of Heroes">
+    <div id="introOverlay" class="intro-overlay">
+        <div class="intro-container">
+            <img class="intro-logo" src="lord%20of%20heros.png" alt="Lord of Heroes">
+            <div class="intro-text">내가 원하는 것은 그대다</div>
+            <div class="intro-text">touch for your memories</div>
+        </div>
+    </div>
+    <div class="music-bar">
+        <div class="center-group">
+            <button class="mb-btn" id="mbPlay" aria-label="Play/Pause">
+                <svg class="icon icon-play" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                <svg class="icon icon-pause" viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>
+            </button>
+            <button class="mb-btn" id="mbShuffle" aria-label="Shuffle">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M17 3h4v4h-2V5h-2V3zm0 14h2v-2h2v4h-4v-2zM3 7h4.5l7.5 10H21v-2h-4.5L9 5H3v2zm0 10h4.5l2.2-3.1-1.6-2.1L6.5 15H3v2z"/></svg>
+            </button>
+            <div class="mb-title" id="mbTitle">재생할 곡을 선택하세요</div>
+            <div class="mb-time" id="mbTime">00:00 / 00:00</div>
+            <div class="mb-progress-wrap" id="mbProgressWrap">
+                <div class="mb-progress" id="mbProgress"></div>
+            </div>
+        </div>
+        <div class="right-group">
+            <button class="mb-btn" id="mbList" aria-label="Toggle List">
+                <svg class="icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+            </button>
+        </div>
+    </div>
+    <div class="music-accordion" id="mbAccordion">
+        <div class="music-list" id="mbListBody"></div>
+    </div>
+
+    <div class="app-container">
+        
+        <!-- Left: Hero Selection -->
+        <aside class="hero-list">
+            <button class="hero-arrow hero-arrow-left" aria-label="왼쪽으로 이동">
+                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+            </button>
+            <button class="hero-arrow hero-arrow-right" aria-label="오른쪽으로 이동">
+                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+            </button>
+            
+        </aside>
+
+        <!-- Middle: Voice List -->
+        <section class="voice-list-section">
+             <!-- Dynamic Content will be loaded here via app.js -->
+        </section>
+
+        <div class="v-divider"></div>
+
+        <!-- Right: Transcript -->
+        <section class="transcript-section">
+             <!-- Dynamic Content will be loaded here via app.js -->
+        </section>
+
+    </div>
+    
+    <!-- Data & Scripts -->
+    <script src="data.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
