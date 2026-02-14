@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Voice Room - Lord Of Heroes</title>
+    <link rel="icon" href="fabicon.png" type="image/png">
     <style>
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Thin.woff2') format('woff2');font-weight:100;font-display:swap}
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraLight.woff2') format('woff2');font-weight:200;font-display:swap}
@@ -290,6 +291,65 @@
             box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
         }
 
+        .upload-progress {
+            position: absolute;
+            right: 16px;
+            bottom: 16px;
+            width: 280px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            align-items: flex-end;
+        }
+        .upload-progress-text {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .upload-progress-bar {
+            position: relative;
+            width: 100%;
+            height: 6px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid var(--glass-border);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        .upload-progress-bar-fill {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0%;
+            background: var(--accent-primary);
+            box-shadow: 0 0 10px var(--accent-glow);
+            transition: width 0.2s ease;
+        }
+        .bottom-footer {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 16px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            pointer-events: none;
+            padding: 20px 0;
+        }
+        .bottom-separator {
+            width: 120px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            opacity: 0.8;
+        }
+        .bottom-credit {
+            margin-top: 8px;
+            font-size: 12px;
+            color: var(--text-muted);
+            opacity: 0.9;
+        }
+        .bottom-footer .upload-progress { position: static; width: clamp(180px, 60vw, 360px); align-items: center; display: none; margin-top: 8px; }
+        
+
         /* Decorative thin corners */
         .corner-deco {
             position: absolute;
@@ -472,6 +532,11 @@
             text-overflow: ellipsis;
         }
 
+        .footer-section { margin-top: 24px; display: flex; align-items: center; gap: 12px; }
+        .footer-left { color: var(--text-main); font-size: 13px; opacity: 0.8; }
+        .footer-right { margin-left: auto; display: flex; align-items: center; }
+        .footer-section .upload-progress { position: static; width: clamp(180px, 40vw, 360px); align-items: flex-start; }
+
         .quote-sheet {
             min-width: 560px;
             min-height: 320px;
@@ -496,31 +561,36 @@
             .app-container {
                 padding: 20px;
                 flex-direction: column;
+                padding-bottom: 120px;
             }
             .hero-list {
-                flex: 0 0 auto;
+                position: fixed;
+                left: 0;
+                right: 0;
+                bottom: 0px;
+                z-index: 8;
+                display: flex;
                 flex-direction: row;
                 align-items: center;
                 gap: 12px;
-                padding-right: 0;
-                padding-left: 0;
-                padding-bottom: 12px;
-                border-right: none;
-                border-bottom: 1px solid rgba(255,255,255,0.06);
+                padding: 10px 16px;
+                background: rgba(20,28,44,0.6);
+                border-top: 1px solid rgba(137,196,244,0.12);
+                box-shadow: 0 -6px 18px rgba(0,0,0,0.25);
                 overflow-x: auto;
                 scrollbar-width: none;
-                position: relative;
-                order: 3;
-                margin-top: 12px;
             }
             .hero-list::-webkit-scrollbar { display: none; }
-            .hero-arrow { display: inline-flex; position: fixed; top: auto; bottom: 20px; }
+            .hero-arrow { display: none; }
             .hex-container {
                 width: 72px;
                 height: calc(72px * 0.866);
                 flex: 0 0 72px;
                 flex-shrink: 0;
             }
+            .bottom-footer { bottom: 160px; }
+            .bottom-footer .upload-progress { display: flex; }
+            .transcript-section .upload-progress { display: none; }
             .voice-list-section {
                 margin-left: 0;
                 margin-top: 20px;
@@ -562,9 +632,12 @@
                 right: 12px;
                 width: 320px;
             }
+            .bottom-footer { bottom: 16px; }
+            .transcript-section .upload-progress { display: none; }
             .mb-progress-wrap { display: none; }
             .mb-time { display: none; }
             .v-divider {
+                flex: 0 0 auto;
                 flex: 0 0 auto;
                 height: 1px;
                 width: 100%;
@@ -573,6 +646,7 @@
                 box-shadow: 0 0 10px rgba(137,196,244,0.1);
                 order: 1;
             }
+            body { padding-bottom: 200px; box-sizing: border-box; }
         }
 
     </style>
@@ -637,8 +711,19 @@
         <section class="transcript-section">
              <!-- Dynamic Content will be loaded here via app.js -->
         </section>
+        <div class="bottom-footer">
+            <div class="bottom-separator"></div>
+            <div class="bottom-credit">made by. @gaesaryeo</div>
+            <div id="footerProgress" class="upload-progress">
+                <div class="upload-progress-text"></div>
+                <div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>
+            </div>
+        </div>
 
     </div>
+    
+
+
     
     <!-- Data & Scripts -->
     <script src="data.js"></script>

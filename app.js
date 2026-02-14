@@ -12,6 +12,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const bgAudio = new Audio();
     let musicIndex = 0;
     let shuffleOn = false;
+    let uploadProgress = { total: 0 };
+    const ARCHIVE_TARGET_HEROES = 187;
+    const ARCHIVE_TARGET_VOICES_PER_HERO = 35;
     const MUSIC_PLAYLIST = (window.MUSIC_PLAYLIST && window.MUSIC_PLAYLIST.length)
         ? window.MUSIC_PLAYLIST
         : [
@@ -21,6 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
             { src: "music/용훈 (ONEWE)-01-이음선(TIMELORD) (Narr. 온달).mp3", title: "이음선(TIMELORD)" },
             { src: "music/하람-01-Remember the days.mp3", title: "Remember the days" }
         ];
+    function isMobile(){
+        return window.matchMedia('(max-width: 900px)').matches;
+    }
 
     // Initialize
     init();
@@ -34,6 +40,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         initMusicBar();
         initIntro();
+        initUploadProgress();
+        initContextGuard();
     }
 
     // 1. Render Hero List (Left Column)
@@ -73,7 +81,48 @@ document.addEventListener('DOMContentLoaded', () => {
             heroListEl.appendChild(hexContainer);
         });
     }
-    
+
+    function computeUploadedCount(){
+        let count = 0;
+        HERO_DATA.forEach(h=>{
+            count += (h.voices||[]).length;
+        });
+        return count;
+    }
+    function ensureFooterProgress(){
+        const bottom = document.querySelector('.bottom-footer');
+        if (bottom && !document.getElementById('footerProgress')) {
+            const m = document.createElement('div');
+            m.id = 'footerProgress';
+            m.className = 'upload-progress';
+            m.innerHTML = `<div class="upload-progress-text"></div><div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>`;
+            bottom.appendChild(m);
+        }
+        if (transcriptEl && !document.getElementById('uploadProgressDesktop')) {
+            const d = document.createElement('div');
+            d.id = 'uploadProgressDesktop';
+            d.className = 'upload-progress';
+            d.innerHTML = `<div class="upload-progress-text"></div><div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>`;
+            transcriptEl.appendChild(d);
+        }
+    }
+    function renderUploadProgress(){
+        const ui = isMobile() ? document.getElementById('footerProgress') : document.getElementById('uploadProgressDesktop');
+        if (!ui) return;
+        const textEl = ui.querySelector('.upload-progress-text');
+        const barFill = ui.querySelector('.upload-progress-bar-fill');
+        const total = uploadProgress.total;
+        const loaded = computeUploadedCount();
+        const pct = total ? Math.round((loaded/total)*100) : 0;
+        if (textEl) textEl.textContent = `data uploaded in progress … ${loaded}/${total} (${pct}%)`;
+        if (barFill) barFill.style.width = `${pct}%`;
+    }
+    function initUploadProgress(){
+        uploadProgress.total = ARCHIVE_TARGET_HEROES * ARCHIVE_TARGET_VOICES_PER_HERO;
+        ensureFooterProgress();
+        renderUploadProgress();
+    }
+    window.addEventListener('resize', renderUploadProgress);
     function initHeroArrows(){
         const left = document.querySelector('.hero-arrow-left');
         const right = document.querySelector('.hero-arrow-right');
@@ -84,6 +133,11 @@ document.addEventListener('DOMContentLoaded', () => {
         if (right) right.addEventListener('click', ()=>scroll(160));
     }
 
+    function initContextGuard(){
+        document.addEventListener('contextmenu', (e)=>{
+            e.preventDefault();
+        });
+    }
     function initMusicBar(){
         const btnPlay = document.getElementById('mbPlay');
         const btnShuffle = document.getElementById('mbShuffle');
@@ -200,11 +254,15 @@ document.addEventListener('DOMContentLoaded', () => {
         renderList();
         if (MUSIC_PLAYLIST.length){
             load(0);
-            bgAudio.play().then(()=>{
-                btnPlay.classList.add('playing');
-            }).catch(()=>{
+            if (!isMobile()){
+                bgAudio.play().then(()=>{
+                    btnPlay.classList.add('playing');
+                }).catch(()=>{
+                    btnPlay.classList.remove('playing');
+                });
+            } else {
                 btnPlay.classList.remove('playing');
-            });
+            }
         } else {
             setTitle();
         }
@@ -213,13 +271,17 @@ document.addEventListener('DOMContentLoaded', () => {
         const overlay = document.getElementById('introOverlay');
         if (!overlay) return;
         function enter(){
-            overlay.remove();
-            if (MUSIC_PLAYLIST.length && bgAudio.paused){
-                bgAudio.play().catch(()=>{});
+            if (!bgAudio.src && MUSIC_PLAYLIST.length){
+                const cur = MUSIC_PLAYLIST[0];
+                bgAudio.src = cur.src;
             }
+            bgAudio.play().catch(()=>{});
+            overlay.remove();
         }
-        overlay.addEventListener('click', enter, { once: true });
         overlay.addEventListener('touchstart', enter, { once: true });
+        overlay.addEventListener('touchend', enter, { once: true });
+        overlay.addEventListener('pointerup', enter, { once: true });
+        overlay.addEventListener('click', enter, { once: true });
     }
     // 2. Select Hero & Render Voice List (Middle Column)
     function selectHero(heroId) {
@@ -325,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="quote-meta">Select a voice record</div>
                 </div>
             `;
+            renderUploadProgress();
             return;
         }
 
@@ -348,10 +411,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="quote-meta" style="color: ${accentColor}">
                     ${voice.label} | ${currentHero.element.toUpperCase()}
                 </div>
-                
                 <!-- Hidden Audio Element for Playback -->
                 <!-- <audio src="${voice.audio}" autoplay></audio> --> 
             </div>
         `;
+        ensureFooterProgress();
+        renderUploadProgress();
     }
 });
