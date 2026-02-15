@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let playingId = null;
     const audio = new Audio();
     const bgAudio = new Audio();
+    const visualizer = new VisualizerController();
     let musicIndex = 0;
     let shuffleOn = false;
     let uploadProgress = { total: 0 };
@@ -23,6 +24,29 @@ document.addEventListener('DOMContentLoaded', () => {
             { src: "music/엔플라잉 (N.Flying)-01-Chance.mp3", title: "Chance" },
             { src: "music/용훈 (ONEWE)-01-이음선(TIMELORD) (Narr. 온달).mp3", title: "이음선(TIMELORD)" },
             { src: "music/하람-01-Remember the days.mp3", title: "Remember the days" }
+        ];
+    const PATCH_NOTES = (window.PATCH_NOTES && window.PATCH_NOTES.length)
+        ? window.PATCH_NOTES
+        : [
+            {
+                id: "2026-02-15",
+                title: "02.15 개발자 노트",
+                date: "2026-02-15",
+                body: [
+                    "- 상단바 우측에 노트패드 아이콘 추가",
+                    "- Patch Notes 모달 구현 및 리스트 뷰 제공",
+                    "- 리스트에서 타이틀 선택 시 본문 단일 페이지 표시"
+                ].join("\n")
+            },
+            {
+                id: "2026-02-14",
+                title: "02.14 개선사항",
+                date: "2026-02-14",
+                body: [
+                    "- 음악 재생바 안정성 개선",
+                    "- 모바일에서 진행바 숨김 처리"
+                ].join("\n")
+            }
         ];
     function isMobile(){
         return window.matchMedia('(max-width: 900px)').matches;
@@ -42,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         initIntro();
         initUploadProgress();
         initContextGuard();
+        initPatchNotes();
     }
 
     // 1. Render Hero List (Left Column)
@@ -91,12 +116,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     function ensureFooterProgress(){
         const bottom = document.querySelector('.bottom-footer');
-        if (bottom && !document.getElementById('footerProgress')) {
+        const container = document.querySelector('.app-container');
+        if (container && bottom && !document.getElementById('mobileProgress')) {
             const m = document.createElement('div');
-            m.id = 'footerProgress';
+            m.id = 'mobileProgress';
             m.className = 'upload-progress';
             m.innerHTML = `<div class="upload-progress-text"></div><div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>`;
-            bottom.appendChild(m);
+            container.insertBefore(m, bottom);
         }
         if (transcriptEl && !document.getElementById('uploadProgressDesktop')) {
             const d = document.createElement('div');
@@ -107,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     function renderUploadProgress(){
-        const ui = isMobile() ? document.getElementById('footerProgress') : document.getElementById('uploadProgressDesktop');
+        const ui = isMobile() ? document.getElementById('mobileProgress') : document.getElementById('uploadProgressDesktop');
         if (!ui) return;
         const textEl = ui.querySelector('.upload-progress-text');
         const barFill = ui.querySelector('.upload-progress-bar-fill');
@@ -121,6 +147,56 @@ document.addEventListener('DOMContentLoaded', () => {
         uploadProgress.total = ARCHIVE_TARGET_HEROES * ARCHIVE_TARGET_VOICES_PER_HERO;
         ensureFooterProgress();
         renderUploadProgress();
+    }
+    function initPatchNotes(){
+        const btn = document.getElementById('mbPatch');
+        const overlay = document.getElementById('patchModal');
+        const content = document.getElementById('patchContent');
+        const btnClose = document.getElementById('patchClose');
+        if (!btn || !overlay || !content) return;
+        function open(){
+            overlay.classList.add('open');
+            renderPatchList();
+        }
+        function close(){
+            overlay.classList.remove('open');
+            content.innerHTML = '';
+        }
+        function renderPatchList(){
+            content.innerHTML = '<div class="patch-list"></div>';
+            const listEl = content.querySelector('.patch-list');
+            PATCH_NOTES.forEach(note=>{
+                const item = document.createElement('div');
+                item.className = 'patch-list-item';
+                item.dataset.id = note.id;
+                item.innerHTML = `
+                    <div class="pli-title">${note.title}</div>
+                    <div class="pli-date">${note.date||''}</div>
+                `;
+                item.addEventListener('click', ()=>{
+                    renderPatchDetail(note);
+                });
+                listEl.appendChild(item);
+            });
+        }
+        function renderPatchDetail(note){
+            content.innerHTML = `
+                <div class="patch-detail">
+                    <div class="patch-detail-title">${note.title}</div>
+                    <div class="patch-detail-body">${note.body.replace(/</g,'&lt;').replace(/>/g,'&gt;')}</div>
+                </div>
+            `;
+        }
+        btn.addEventListener('click', open);
+        btn.addEventListener('pointerup', open);
+        btn.addEventListener('touchend', (e)=>{ e.preventDefault(); open(); }, { passive: false });
+        if (btnClose) btnClose.addEventListener('click', close);
+        overlay.addEventListener('click', (e)=>{
+            if (e.target === overlay) close();
+        });
+        document.addEventListener('keydown', (e)=>{
+            if (e.key === 'Escape') close();
+        });
     }
     window.addEventListener('resize', renderUploadProgress);
     function initHeroArrows(){
@@ -303,6 +379,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         // Reset Transcript View
         renderTranscript(null); 
+        visualizer.preloadVoices(currentHero.voices).catch(()=>{});
         
         // Auto-select first voice? (Optional, let's wait for user interaction)
          if (currentHero.voices.length > 0) {
@@ -329,9 +406,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             voiceItem.addEventListener('click', () => {
                 selectVoice(voice.id);
-                if (voice.audio) {
-                    if (audio.src !== voice.audio) audio.src = voice.audio;
-                    audio.play().then(()=>{
+                if (!playingId || playingId !== voice.id) {
+                    visualizer.playVoice(voice).then(()=>{
                         if (playingId && playingId!==voice.id) {
                             const prevItem = document.querySelector(`.voice-list-section .voice-item[data-id="${playingId}"]`);
                             if (prevItem) prevItem.classList.remove('playing');
@@ -341,25 +417,23 @@ document.addEventListener('DOMContentLoaded', () => {
                     }).catch(()=>{
                         voiceItem.classList.remove('playing');
                     });
+                } else {
+                    visualizer.stop();
+                    voiceItem.classList.remove('playing');
+                    playingId = null;
                 }
             });
 
             scrollEl.appendChild(voiceItem);
         });
 
-        audio.addEventListener('ended', ()=>{
+        visualizer.onEnded = ()=>{
             if (playingId) {
                 const prevItem = document.querySelector(`.voice-list-section .voice-item[data-id="${playingId}"]`);
                 if (prevItem) prevItem.classList.remove('playing');
             }
             playingId = null;
-        });
-        audio.addEventListener('pause', ()=>{
-            if (playingId) {
-                const prevItem = document.querySelector(`.voice-list-section .voice-item[data-id="${playingId}"]`);
-                if (prevItem) prevItem.classList.remove('playing');
-            }
-        });
+        };
     }
 
     // 3. Select Voice & Render Transcript (Right Column)
@@ -408,6 +482,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="quote-text" style="border-left-color: ${accentColor}">
                     "${voice.transcript}"
                 </div>
+                <div class="quote-visualizer"><canvas></canvas></div>
                 <div class="quote-meta" style="color: ${accentColor}">
                     ${voice.label} | ${currentHero.element.toUpperCase()}
                 </div>
@@ -415,6 +490,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 <!-- <audio src="${voice.audio}" autoplay></audio> --> 
             </div>
         `;
+        const canvas = transcriptEl.querySelector('.quote-visualizer canvas');
+        visualizer.setAccent(accentColor);
+        visualizer.attachCanvas(canvas);
         ensureFooterProgress();
         renderUploadProgress();
     }

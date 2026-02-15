@@ -301,6 +301,16 @@
             gap: 6px;
             align-items: flex-end;
         }
+        #mobileProgress {
+            position: absolute;
+            left: 16px;
+            right: 16px;
+            bottom: 72px;
+            display: none;
+            width: auto;
+            align-items: flex-end;
+            z-index: 9;
+        }
         .upload-progress-text {
             font-size: 12px;
             color: var(--text-muted);
@@ -334,12 +344,6 @@
             align-items: center;
             pointer-events: none;
             padding: 20px 0;
-        }
-        .bottom-separator {
-            width: 120px;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            opacity: 0.8;
         }
         .bottom-credit {
             margin-top: 8px;
@@ -398,6 +402,18 @@
             letter-spacing: 1px;
             text-transform: uppercase;
             opacity: 0.8;
+        }
+        .quote-visualizer {
+            position: absolute;
+            inset: 60px 12px 60px 12px;
+            pointer-events: none;
+            opacity: 0.9;
+        }
+        .quote-visualizer canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+            filter: drop-shadow(0 0 8px var(--accent-glow));
         }
 
         .v-divider {
@@ -532,6 +548,109 @@
             text-overflow: ellipsis;
         }
 
+        /* Patch Notes Modal */
+        .patch-modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.55);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 100;
+            backdrop-filter: blur(2px);
+        }
+        .patch-modal-overlay.open { display: flex; }
+        .patch-modal {
+            background: rgba(20, 30, 50, 0.35);
+            border: 1px solid rgba(137,196,244,0.16);
+            border-radius: 8px;
+            box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+            width: 720px;
+            max-width: 90vw;
+            max-height: 70vh;
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        .patch-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px;
+            background: linear-gradient(180deg, rgba(20,28,44,0.7), rgba(20,28,44,0.35));
+            border-bottom: 1px solid rgba(137,196,244,0.12);
+        }
+        .patch-title {
+            font-size: 16px;
+            color: var(--text-main);
+            letter-spacing: 1px;
+            opacity: 0.9;
+        }
+        .patch-close {
+            margin-left: auto;
+            background: rgba(137,196,244,0.08);
+            border: 1px solid rgba(137,196,244,0.16);
+            color: var(--text-main);
+            padding: 6px 8px;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .patch-content {
+            padding: 16px;
+            overflow: auto;
+        }
+        .patch-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .patch-list-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 14px;
+            border: 1px solid var(--glass-border);
+            background: var(--glass-surface);
+            cursor: pointer;
+        }
+        .patch-list-item:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+        }
+        .pli-title {
+            flex: 1;
+            color: var(--text-main);
+        }
+        .pli-date {
+            font-size: 12px;
+            color: var(--text-muted);
+        }
+        .patch-detail-title {
+            font-size: 1.6rem;
+            font-weight: 500;
+            margin-bottom: 12px;
+            background: linear-gradient(180deg, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .patch-detail-body {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #e2e8f0;
+            border-left: 1px solid var(--accent-line);
+            padding-left: 16px;
+            white-space: pre-wrap;
+        }
+        @media (max-width: 900px) {
+            .patch-modal {
+                width: 92vw;
+                max-height: 70vh;
+            }
+        }
         .footer-section { margin-top: 24px; display: flex; align-items: center; gap: 12px; }
         .footer-left { color: var(--text-main); font-size: 13px; opacity: 0.8; }
         .footer-right { margin-left: auto; display: flex; align-items: center; }
@@ -621,10 +740,12 @@
                 min-height: 260px;
             }
             .brand-logo {
+                position: static;
                 width: 120px;
                 max-width: 30vw;
-                top: 12px;
-                right: 12px;
+                z-index: auto;
+                margin: 12px 12px 0 auto;
+                align-self: flex-end;
             }
             .music-bar {height:52px;padding:8px 12px}
             .music-accordion {
@@ -634,6 +755,7 @@
             }
             .bottom-footer { bottom: 16px; }
             .transcript-section .upload-progress { display: none; }
+            #mobileProgress { display: flex; }
             .mb-progress-wrap { display: none; }
             .mb-time { display: none; }
             .v-divider {
@@ -654,7 +776,6 @@
 <body>
 
     <div class="stars"></div>
-    <img class="brand-logo" src="lord%20of%20heros.png" alt="Lord of Heroes">
     <div id="introOverlay" class="intro-overlay">
         <div class="intro-container">
             <img class="intro-logo" src="lord%20of%20heros.png" alt="Lord of Heroes">
@@ -678,6 +799,13 @@
             </div>
         </div>
         <div class="right-group">
+            <button class="mb-btn" id="mbPatch" aria-label="Patch Notes">
+                <svg class="icon" viewBox="0 0 24 24">
+                    <rect x="4" y="6" width="16" height="2" rx="1"></rect>
+                    <rect x="4" y="11" width="16" height="2" rx="1"></rect>
+                    <rect x="4" y="16" width="16" height="2" rx="1"></rect>
+                </svg>
+            </button>
             <button class="mb-btn" id="mbList" aria-label="Toggle List">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
             </button>
@@ -688,6 +816,7 @@
     </div>
 
     <div class="app-container">
+        <img class="brand-logo" src="lord%20of%20heros.png" alt="Lord of Heroes">
         
         <!-- Left: Hero Selection -->
         <aside class="hero-list">
@@ -712,21 +841,31 @@
              <!-- Dynamic Content will be loaded here via app.js -->
         </section>
         <div class="bottom-footer">
-            <div class="bottom-separator"></div>
             <div class="bottom-credit">made by. @gaesaryeo</div>
-            <div id="footerProgress" class="upload-progress">
-                <div class="upload-progress-text"></div>
-                <div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>
-            </div>
         </div>
 
     </div>
     
 
+    <!-- Patch Notes Modal -->
+    <div class="patch-modal-overlay" id="patchModal" aria-hidden="true">
+        <div class="patch-modal" id="patchSheet" role="dialog" aria-modal="true" aria-labelledby="patchTitle">
+            <div class="patch-header">
+                <div class="patch-title" id="patchTitle">Patch Notes</div>
+                <button class="patch-close" id="patchClose" aria-label="Close">
+                    <svg class="icon" viewBox="0 0 24 24">
+                        <line x1="6" y1="6" x2="18" y2="18" stroke="#cfe6f9" stroke-width="2" stroke-linecap="round"></line>
+                        <line x1="18" y1="6" x2="6" y2="18" stroke="#cfe6f9" stroke-width="2" stroke-linecap="round"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="patch-content" id="patchContent"></div>
+        </div>
+    </div>
 
     
     <!-- Data & Scripts -->
     <script src="data.js"></script>
+    <script src="visualizer.js"></script>
     <script src="app.js"></script>
-</body>
 </html>

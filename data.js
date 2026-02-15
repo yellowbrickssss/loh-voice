@@ -166,6 +166,48 @@ const HERO_DATA = [
                 label: "영웅 화면 16",
                 transcript: "그러니까 나는, 시간의 미아인 셈이지. 돌아갈 곳이 없지 않나.",
                 audio: "ondal/ondal_2 (14).mp3"
+            },
+                        {
+                id: "v_auto_1771116630",
+                label: "영웅 화면 17",
+                transcript: "시간은 길지 않았어도 함께 등을 맞대고 싸웠다면 전우라 할 수 있겠지. 뭐…. 그렇게 여겼던 놈이 배신한 적도 있고. 적어도, 내가 먼저 찌르지는 않았으니 걱정 마라.",
+                audio: "ondal/ondal_2 (15).mp3"
+            },
+            {
+                id: "v_auto_1771116712",
+                label: "영웅 화면 18",
+                transcript: "음? 딱히 새로운 관계를 거부하지는 않는데. 내 처지와는 별개로, 지금 눈 앞에 너희는 살아있고, 나와 소통하고 있지 않나.",
+                audio: "ondal/ondal_2 (16).mp3"
+            },
+            {
+                id: "v_auto_1771116825",
+                label: "영웅 화면 19",
+                transcript: "흐음…. 가우리가 멸망했다고는 하지만, 실감이 잘 안 나는군. 사실 그럴 거라 생각은 했지만, '이미 그렇게 되어 버렸다'라는 전개는 옛날부터 별로 안 좋아했거든.",
+                audio: "ondal/ondal_2 (17).mp3"
+            },
+                        {
+                id: "v_auto_1771117060",
+                label: "영웅 화면 20",
+                transcript: "원망? 모르겠군. 내가 이쪽으로 온 게 누군가의 의도라면, 원망보다는…. 하아……. 그때 가 봐야 알겠군. 말로 할지, 주먹으로 할지.",
+                audio: "ondal/ondal_2 (18).mp3"
+            },
+            {
+                id: "v_auto_1771117202",
+                label: "영웅 화면 21",
+                transcript: "너― 아직 나를 잘 모르는 것 같은데. 어떻게 해야 더 알 수 있을까.",
+                audio: "ondal/ondal_2 (19).mp3"
+            },
+            {
+                id: "v_auto_1771117290",
+                label: "영웅 화면 22",
+                transcript: "전술 훈련 참관 말인가? 그럼 넌, 내게 뭘 해 줄 거지? 응? 하하.",
+                audio: "ondal/ondal_2 (20).mp3"
+            },
+            {
+                id: "v_auto_1771117371",
+                label: "영웅 화면 23",
+                transcript: "내가 의리와 신의를 중요하게 생각하는 것과는 다르지. 말했지 않나. 항상 손해를 보면서 살 정도로, '좋은 놈'은 절대 아니라고.",
+                audio: "ondal/ondal_2 (21).mp3"
             }
         ]
     },
@@ -229,7 +271,98 @@ const HERO_DATA = [
                 label: "영웅 각성 3",
                 transcript: "하, 욕심도 많군. 그래 보이긴 해.",
                 audio: "ondal/dark_ondal (8).mp3"
+            },
+                        {
+                id: "v_auto_1771119329",
+                label: "영웅 화면 1",
+                transcript: "바라는 바를 이룰 수 있다면야, 그깟 비열한 놈 소리 듣는 게 대수겠나.",
+                audio: "ondal/dark_ondal (9).mp3"
+            },
+            {
+                id: "v_auto_1771119397",
+                label: "영웅 화면 2",
+                transcript: "고룡의 후예라. 어지간히도 작아, 내가 올려다 볼 일은 없었지. 그럴 수 있었을 때는, 이미 내가 목숨을 다해 쓰러진 후였고. 하하! 그 표정 한 번, 볼 만 하던데.",
+                audio: "ondal/dark_ondal (10).mp3"
+            },
+            {
+                id: "v_auto_1771119471",
+                label: "영웅 화면 3",
+                transcript: "입맛 떨어지게 죽상 쓰지 말고, 좀 웃어라. 그래― 발터. 이쁘장하게 생겨서 그럼 쓰나. 또 삐졌나? 하여튼 녀석.",
+                audio: "ondal/dark_ondal (11).mp3"
+            },
+            {
+                id: "v_auto_1771119576",
+                label: "영웅 화면 4",
+                transcript: "한 번만 더 면상을 들이대면 주먹으로 끝나지 않는다고 했을 텐데. 그래, 그래. 크롬 레디오스. 네 고귀하고 잘나신 이름, 골백 번은 들었다.",
+                audio: "ondal/dark_ondal (12).mp3"
+            },
+            {
+                id: "v_auto_1771119659",
+                label: "영웅 화면 5",
+                transcript: "머리 굴릴 시간에, 좀 더 앞으로 나와 봐. 그게 책사의 의무래도 말이지. 너, 그럴 수 있는 놈이잖나.",
+                audio: "ondal/dark_ondal (13).mp3"
+            },
+                        {
+                id: "v_auto_1771121774",
+                label: "영웅 화면 6",
+                transcript: "아…. 다시 선택을 해야 한다면, 그래. 그래도 난 검을 쥐어야겠지. 내가 그 녀석을, 언제는 이긴 적이 있던가?",
+                audio: "ondal/dark_ondal (14).mp3"
+            },
+            {
+                id: "v_auto_1771121839",
+                label: "영웅 화면 7",
+                transcript: "나는, 너를 버린 게 아니다. 그리고 우리도, 너를 버린 게 아니다. 버려졌단 생각은 말라고, 이 자식아. 너 또한, 영원한…. 내 주군이다.",
+                audio: "ondal/dark_ondal (15).mp3"
+            },
+            {
+                id: "v_auto_1771121910",
+                label: "영웅 화면 8",
+                transcript: "글을 못 읽는다 해서, 사람의 표정까지 못 읽는 건 아니지. 너, 내가 그리 무섭나? 나는 연구소인지 뭔지 하는 곳의 아저씨가 아닌데.",
+                audio: "ondal/dark_ondal (16).mp3"
+            },
+            {
+                id: "v_auto_1771122022",
+                label: "영웅 화면 9",
+                transcript: "나는 어디에서 왔고, 어디까지 갈 수 있나. 그딴 건 모른다. 어딘가에서 왔겠거니 싶고, 어디든지 갈 수 있다 생각하는 거야. 그래…. 그것 뿐.",
+                audio: "ondal/dark_ondal (17).mp3"
+            },
+            {
+                id: "v_auto_1771122087",
+                label: "영웅 화면 10",
+                transcript: "그 녀석? 그래, 이름은 평강이다. 정혼자냐고? 하! 너도 참, 뚫린 입이라고 이상한 소리를 지껄이는군.",
+                audio: "ondal/dark_ondal (18).mp3"
+            },
+            {
+                id: "v_auto_1771122146",
+                label: "영웅 화면 11",
+                transcript: "어디, 나와 대적할 수 있는 녀석은 없나? 몸도 못 가누는 녀석을 모셔다 드리는 일이, 워낙 번거로워 말이다.",
+                audio: "ondal/dark_ondal (19).mp3"
+            },
+                        {
+                id: "v_auto_1771122949",
+                label: "영웅 화면 12",
+                transcript: "바라는 게 있으면 있다고 말해. 네가 원하는 것 하나 못 들어주겠나? …뭐? 정? ……하아, 그래. 이것도 정이라면.",
+                audio: "ondal/dark_ondal (20).mp3"
+            },
+            {
+                id: "v_auto_1771123055",
+                label: "영웅 화면 13",
+                transcript: "주군, 뭘 그리 보고 있나. 꽃? 음, 생긴 것 답게 아기자기한 걸 좋아하는군. 그래. 따다 주랴? 아, 따지 말라고? 거 참, 까다로운 녀석.",
+                audio: "ondal/dark_ondal (21).mp3"
+            },
+            {
+                id: "v_auto_1771123120",
+                label: "영웅 화면 14",
+                transcript: "그…. 얼빵한 표정 좀 안 지을 수 없나? 누가 자꾸 생각나서 말이지.",
+                audio: "ondal/dark_ondal (22).mp3"
+            },
+            {
+                id: "v_auto_1771123195",
+                label: "영웅 화면 15",
+                transcript: "이름은 변하지 않아. 그리고 그건, 나 자체도 마찬가지겠지. 나는 언제나, '너의 온달'이다.",
+                audio: "ondal/dark_ondal (23).mp3"
             }
+
         ]
     },
     {
@@ -250,6 +383,48 @@ const HERO_DATA = [
                 label: "영웅 영입",
                 transcript: "적당히 쉬려고 했는데, 그러지도 못하게 하시네요.",
                 audio: "syphfride/light_syphfride (1).mp3"
+            },
+                        {
+                id: "v_auto_1771124985",
+                label: "영웅 초월 1",
+                transcript: "…이건, 저도 처음 겪어보는 일이네요. 당신, 사람 맞나요?",
+                audio: "syphfride/light_syphfride (2).mp3"
+            },
+            {
+                id: "v_auto_1771125046",
+                label: "영웅 초월 2",
+                transcript: "포근한… 기운…. 이게 당신의 힘인가요?",
+                audio: "syphfride/light_syphfride (3).mp3"
+            },
+            {
+                id: "v_auto_1771125121",
+                label: "영웅 초월 3",
+                transcript: "저 말고, 다른 이들에게 투자해도 될 텐데. 굳이….",
+                audio: "syphfride/light_syphfride (4).mp3"
+            },
+            {
+                id: "v_auto_1771125170",
+                label: "영웅 각성 1",
+                transcript: "어떻게 이럴 수 있는 건지 궁금하네요.",
+                audio: "syphfride/light_syphfride (5).mp3"
+            },
+            {
+                id: "v_auto_1771125228",
+                label: "영웅 각성 2",
+                transcript: "더, 힘 쓰라는 거죠? 알았어요.",
+                audio: "syphfride/light_syphfride (6).mp3"
+            },
+            {
+                id: "v_auto_1771125279",
+                label: "타이틀 콜",
+                transcript: "Lord Of Heroes.",
+                audio: "syphfride/light_syphfride (7).mp3"
+            },
+            {
+                id: "v_auto_1771125350",
+                label: "영웅 화면 1",
+                transcript: "자리를 비우신 동안 주류 창고가 싹, 비었다고요. 빨리 다시 채워 주세요. 그게 조건 중 하나였잖아요.",
+                audio: "syphfride/light_syphfride (8).mp3"
             }
 
         ]
