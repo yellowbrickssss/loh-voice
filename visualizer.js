@@ -13,6 +13,12 @@ class VisualizerController {
     this.smoothArray = null;
     this.accent = "#89c4f4";
     this.frameReq = null;
+    this.t = 0;
+    this.damping = 0.08;
+    this.amplitudeBoost = 3;
+    this.attack = 0.25;
+    this.decay = 0.09;
+    this.baseWaveFrac = 0.12;
   }
   _ensureCtx() {
     if (!this.audioCtx) {
@@ -97,44 +103,54 @@ class VisualizerController {
     this.analyser.getByteTimeDomainData(this.dataArray);
     const w = this.canvas.width;
     const h = this.canvas.height;
-    const mid = h / 2;
-    const ema = 0.82;
+    const baseY = h;
     const len = this.dataArray.length;
+    let sumSq = 0;
     for (let i = 0; i < len; i++) {
       const v = (this.dataArray[i] - 128) / 128;
-      const clamped = Math.max(-1, Math.min(1, v));
-      const prev = i === 0 ? 0 : this.smoothArray[i - 1];
-      this.smoothArray[i] = prev * ema + clamped * (1 - ema);
+      sumSq += v * v;
     }
+    const rms = Math.sqrt(sumSq / len);
+    const floor = 0.02;
+    const target = Math.min(1, Math.max(0, rms - floor) * this.amplitudeBoost);
+    const prevAmp = this._amp || 0;
+    const rate = target > prevAmp ? this.attack : this.decay;
+    const amp = prevAmp + (target - prevAmp) * rate;
+    this._amp = amp;
+    this.t += 0.016;
+    const lfo = 0.5 + 0.5 * Math.sin(this.t * 0.4);
+    const cycles = 1.4 + 0.6 * lfo;
+    const k = (Math.PI * 2 * cycles) / w;
+    const baseH = h * (this.baseWaveFrac + 0.85 * amp);
     this.ctx.clearRect(0, 0, w, h);
-    this.ctx.lineWidth = Math.max(1, Math.floor(w / 600));
-    this.ctx.strokeStyle = this.accent;
     this.ctx.shadowColor = this.accent;
-    this.ctx.shadowBlur = 14;
-    this.ctx.globalAlpha = 0.9;
-    this.ctx.beginPath();
-    const step = w / (len - 1);
-    for (let i = 0; i < len; i++) {
-      const x = i * step;
-      const y = mid + this.smoothArray[i] * (h * 0.38);
-      if (i === 0) this.ctx.moveTo(x, y);
-      else this.ctx.lineTo(x, y);
+    const layers = [
+      { alpha: 0.65, blur: 22, ampMul: 1.0, phase: this.t * 0.9 },
+      { alpha: 0.35, blur: 30, ampMul: 0.78, phase: this.t * 0.6 + 0.6 },
+      { alpha: 0.22, blur: 38, ampMul: 0.55, phase: this.t * 0.4 + 1.2 }
+    ];
+    for (let n = 0; n < layers.length; n++) {
+      const lay = layers[n];
+      const grad = this.ctx.createLinearGradient(0, baseY - baseH * 1.2, 0, baseY);
+      grad.addColorStop(0, this.accent);
+      grad.addColorStop(1, 'rgba(255,255,255,0.05)');
+      this.ctx.globalAlpha = lay.alpha;
+      this.ctx.fillStyle = grad;
+      this.ctx.shadowBlur = lay.blur;
+      this.ctx.beginPath();
+      for (let x = 0; x <= w; x++) {
+        const s1 = Math.sin(x * k + lay.phase);
+        const s2 = Math.sin(x * k * 0.6 - lay.phase * 0.8);
+        const wave = 0.5 + 0.5 * (0.65 * s1 + 0.35 * s2);
+        const y = baseY - wave * (baseH * lay.ampMul);
+        if (x === 0) this.ctx.moveTo(x, y);
+        else this.ctx.lineTo(x, y);
+      }
+      this.ctx.lineTo(w, baseY);
+      this.ctx.lineTo(0, baseY);
+      this.ctx.closePath();
+      this.ctx.fill();
     }
-    this.ctx.stroke();
-    this.ctx.globalAlpha = 0.15;
-    this.ctx.fillStyle = this.accent;
-    this.ctx.shadowBlur = 24;
-    this.ctx.beginPath();
-    for (let i = 0; i < len; i++) {
-      const x = i * step;
-      const y = mid + this.smoothArray[i] * (h * 0.38);
-      if (i === 0) this.ctx.moveTo(x, y);
-      else this.ctx.lineTo(x, y);
-    }
-    this.ctx.lineTo(w, mid);
-    this.ctx.lineTo(0, mid);
-    this.ctx.closePath();
-    this.ctx.fill();
     this.frameReq = requestAnimationFrame(() => this._renderLoop());
   }
 }
