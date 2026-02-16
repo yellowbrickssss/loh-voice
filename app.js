@@ -15,8 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let shuffleOn = false;
     let uploadProgress = { total: 0 };
     let heroSearchTerm = '';
-    const ARCHIVE_TARGET_HEROES = 187;
-    const ARCHIVE_TARGET_VOICES_PER_HERO = 35;
+    const ARCHIVE_TARGET_TOTAL_VOICES = 10080;
     const MUSIC_PLAYLIST = (window.MUSIC_PLAYLIST && window.MUSIC_PLAYLIST.length)
         ? window.MUSIC_PLAYLIST
         : [
@@ -131,18 +130,30 @@ document.addEventListener('DOMContentLoaded', () => {
     function normalizeText(text){
         return String(text||'').toLowerCase();
     }
+    function heroMatchesKeyword(hero, rawKeyword){
+        if (!hero) return false;
+        const keyword = normalizeText(rawKeyword.trim());
+        if (!keyword) return true;
+        const nameKo = normalizeText(hero.name);
+        const idText = normalizeText(hero.id);
+        const segments = idText.split('_');
+        const matchKoPrefix = nameKo.startsWith(keyword);
+        const matchEnPrefix = segments.some(seg=>seg.startsWith(keyword));
+        return matchKoPrefix || matchEnPrefix;
+    }
     function getFilteredHeroes(){
-        const keyword = normalizeText(heroSearchTerm.trim());
+        const keywordRaw = heroSearchTerm;
+        const keyword = normalizeText(keywordRaw.trim());
         if (!keyword) return HERO_DATA.slice();
-        return HERO_DATA.filter(hero=>normalizeText(hero.name).includes(keyword));
+        return HERO_DATA.filter(hero=>heroMatchesKeyword(hero, keywordRaw));
     }
     function applyHeroFilter(){
-        const keyword = normalizeText(heroSearchTerm.trim());
+        const keywordRaw = heroSearchTerm;
         const hexes = heroListEl.querySelectorAll('.hex-container');
         hexes.forEach(el=>{
             const heroId = el.dataset.id;
             const hero = HERO_DATA.find(h=>h.id === heroId);
-            const match = !keyword || (hero && normalizeText(hero.name).includes(keyword));
+            const match = heroMatchesKeyword(hero, keywordRaw);
             el.style.display = match ? '' : 'none';
         });
     }
@@ -247,12 +258,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const barFill = ui.querySelector('.upload-progress-bar-fill');
         const total = uploadProgress.total;
         const loaded = computeUploadedCount();
-        const pct = total ? Math.round((loaded/total)*100) : 0;
-        if (textEl) textEl.textContent = `data uploaded in progress … ${loaded}/${total} (${pct}%)`;
+        const rawPct = total ? (loaded/total)*100 : 0;
+        const pct = Math.round(rawPct * 100) / 100;
+        const pctText = pct.toFixed(2);
+        if (textEl) textEl.textContent = `data uploaded in progress … ${loaded}/${total} (${pctText}%)`;
         if (barFill) barFill.style.width = `${pct}%`;
     }
     function initUploadProgress(){
-        uploadProgress.total = ARCHIVE_TARGET_HEROES * ARCHIVE_TARGET_VOICES_PER_HERO;
+        uploadProgress.total = ARCHIVE_TARGET_TOTAL_VOICES;
         ensureFooterProgress();
         renderUploadProgress();
     }

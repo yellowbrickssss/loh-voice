@@ -493,7 +493,7 @@ const HERO_DATA = [
         ]
     },
        {
-        id: "lucilica_dark",
+        id: "dark_lucilica",
         name: "루실리카",
         element: "dark",
         title: "이상을 추구하는 의지",
@@ -630,16 +630,111 @@ const HERO_DATA = [
                 label: "영웅 화면 15",
                 transcript: "그대는 말하는 법을 좀 교정할 필요가 있어요. 나, 원 참. 매일같이, '내가 바라는 것은 그대다', 같은 말이나 해 대니 오해하는 사람이 생기죠.",
                 audio: "lucilica/lucil (22).mp3"
+            },
+            {
+                id: "v_auto_1771219162",
+                label: "영웅 화면 16",
+                transcript: "미하일 경이 어디 있는지 알고 있나요? 아니, 별 건 아니고. 어제 샬롯이랑 시내에 다녀 왔다기에 조금. 네? 과보호? 나 참, 사람을 뭘로 보고! 아니거든요?",
+                audio: "lucilica/lucil (23).mp3"
+            },
+            {
+                id: "v_auto_1771222387",
+                label: "영웅 화면 17",
+                transcript: "추천하는 과실주요? 플로렌스산 시드르가 최고였죠! 캬라멜과 같이 마셔도 맛있고, 단품으로도 훌륭하니까요! 아…. 그대에게는… 조금 독할지도?",
+                audio: "lucilica/lucil (24).mp3"
             }
-            
         ]    
     },
+    {
+        id: "dark_mikhail",
+        name: "미하일",
+        element: "dark",
+        title: "황혼의 추적자",
+        image: "mikhail/dark_mikhail.png",
+        voices: [
+            {
+                id: "v_auto_1771231051",
+                label: "자기소개",
+                transcript: "명령하시면, 수행합니다. 그것으로 충분합니다.",
+                audio: "mikhail/mikail.mp3"
+            },
+            {
+                id: "v_auto_1771231109",
+                label: "영웅 영입 1",
+                transcript: "미하일 블레이크, 로드의, 눈과 발이 되겠습니다.",
+                audio: "mikhail/mikail (1).mp3"
+            },
+            {
+                id: "v_auto_1771231159",
+                label: "영웅 영입 2",
+                transcript: "제 충성의 대상은, 언제까지나 로드 뿐입니다.",
+                audio: "mikhail/mikail (3).mp3"
+            },
+                        {
+                id: "v_auto_1771233142",
+                label: "영웅 초월 1",
+                transcript: "새로운 가능성을, 얻었습니다.",
+                audio: "mikhail/mikail (5).mp3"
+            },
+            {
+                id: "v_auto_1771233186",
+                label: "영웅 초월 2",
+                transcript: "잠재력이…. 늘어났을까요?",
+                audio: "mikhail/mikail (6).mp3"
+            },
+                        {
+                id: "v_auto_1771233288",
+                label: "영웅 초월 3",
+                transcript: "신선한 감각입니다.",
+                audio: "mikhail/mikail (7).mp3"
+            },
+            {
+                id: "v_auto_1771233380",
+                label: "영웅 초월 4",
+                transcript: "기량을 다시 쌓을 수 있겠군요.",
+                audio: "mikhail/mikail (8).mp3"
+            },
+            {
+                id: "v_auto_1771233423",
+                label: "영웅 각성 1",
+                transcript: "보다, 먼 곳을 볼 수 있게 된 것 같습니다.",
+                audio: "mikhail/mikail (9).mp3"
+            },
+                        {
+                id: "v_auto_1771233541",
+                label: "영웅 각성 2",
+                transcript: "로드의 기대에, 반드시 부응하겠습니다.",
+                audio: "mikhail/mikail (10).mp3"
+            },
+            {
+                id: "v_auto_1771233589",
+                label: "영웅 각성 3",
+                transcript: "활력이 솟아 오릅니다. 감사합니다.",
+                audio: "mikhail/mikail (11).mp3"
+            },
+                        {
+                id: "v_auto_1771233950",
+                label: "타이틀 콜",
+                transcript: "Lord Of Heroes.",
+                audio: "mikhail/mikail (12).mp3"
+            }
+        ]
+         },
         {
         id: "fire_laian",
         name: "라이안",
         element: "fire",
         title: "미지를 비추는 용화",
         image: "laian/fire_laian.png",
+        voices: [
+        ]
+    },
+        {
+        id: "fire_aurea",
+        name: "아우레아",
+        element: "fire",
+        title: "아발론의 재단사",
+        image: "aurea/fire_aurea.png",
         voices: [
         ]
     }
