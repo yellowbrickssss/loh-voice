@@ -484,6 +484,15 @@ const HERO_DATA = [
         ]
     },
         {
+        id: "earth_brandon",
+        name: "브랜든",
+        element: "earth",
+        title: "불요의 희망",
+        image: "brandon/earth_brandon.png",
+        voices: [
+        ]
+    },
+        {
         id: "water_rosanna",
         name: "로잔나",
         element: "water",
