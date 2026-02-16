@@ -23,7 +23,10 @@ document.addEventListener('DOMContentLoaded', () => {
             { src: "music/LUCY-01-Light UP.mp3", title: "Light UP" },
             { src: "music/엔플라잉 (N.Flying)-01-Chance.mp3", title: "Chance" },
             { src: "music/용훈 (ONEWE)-01-이음선(TIMELORD) (Narr. 온달).mp3", title: "이음선(TIMELORD)" },
-            { src: "music/하람-01-Remember the days.mp3", title: "Remember the days" }
+            { src: "music/하람-01-Remember the days.mp3", title: "Remember the days" },
+            { title: "빛의 시작(My First Light)", artist: "수안 (퍼플키스)", src: "music/수안 (퍼플키스)-01-빛의 시작(My First Light).mp3"},
+            { title: "Chance (Inst.)", artist: "엔플라잉 (N.Flying)", src: "music/엔플라잉 (N.Flying)-03-Chance (Inst.).mp3"},
+            { title: "Eternal Bloom (Korean Version)", artist: "윤마치 (MRCH)", src: "music/윤마치 (MRCH)-01-Eternal Bloom (Korean Version).mp3"},
         ];
     const PATCH_NOTES = (window.PATCH_NOTES && window.PATCH_NOTES.length)
         ? window.PATCH_NOTES
@@ -236,12 +239,12 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
     function ensureFooterProgress(){
-        if (transcriptEl && !document.getElementById('uploadProgressDesktop')) {
+        if (!document.getElementById('uploadProgressDesktop')) {
             const d = document.createElement('div');
             d.id = 'uploadProgressDesktop';
             d.className = 'upload-progress';
             d.innerHTML = `<div class="upload-progress-text"></div><div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>`;
-            transcriptEl.appendChild(d);
+            document.body.appendChild(d);
         }
     }
     function renderUploadProgress(){
@@ -460,13 +463,22 @@ document.addEventListener('DOMContentLoaded', () => {
     function initIntro(){
         const overlay = document.getElementById('introOverlay');
         if (!overlay) return;
+        
+        let entered = false;
         function enter(){
+            if (entered) return;
+            entered = true;
+
             if (!bgAudio.src && MUSIC_PLAYLIST.length){
                 const cur = MUSIC_PLAYLIST[0];
                 bgAudio.src = cur.src;
             }
             bgAudio.play().catch(()=>{});
-            overlay.remove();
+            
+            overlay.classList.add('fade-out');
+            setTimeout(() => {
+                overlay.remove();
+            }, 800);
         }
         overlay.addEventListener('touchstart', enter, { once: true });
         overlay.addEventListener('touchend', enter, { once: true });
