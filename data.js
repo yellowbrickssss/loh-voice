@@ -372,6 +372,150 @@ const HERO_DATA = [
         title: "끝을 가르는 맹화",
         image: "ondal/fire_ondal.png",
         voices: [
+                        {
+                id: "v_auto_1771239492",
+                label: "자기소개",
+                transcript: "가우리의 온달이라 하오. 찾으시었소.",
+                audio: "ondal/fire_ondal/불-온달 자기소개.mp3"
+            },
+            {
+                id: "v_auto_1771239563",
+                label: "영웅 영입 1",
+                transcript: "당신의 부탁이라면, 무엇이든.",
+                audio: "ondal/fire_ondal/불-온달 영입.mp3"
+            },
+            {
+                id: "v_auto_1771239600",
+                label: "영웅 영입 2",
+                transcript: "이 생이 다할 때까지, 당신께 충성을 맹세하겠소.",
+                audio: "ondal/fire_ondal/불-온달 영입 (1).mp3"
+            },
+            {
+                id: "v_auto_1771239655",
+                label: "영웅 초월 1",
+                transcript: "이게…. 무엇이오?",
+                audio: "ondal/fire_ondal/불-온달 초월.mp3"
+            },
+                        {
+                id: "v_auto_1771239863",
+                label: "영웅 초월 2",
+                transcript: "당신…. 신선이라도 되는 것이오?",
+                audio: "ondal/fire_ondal/불-온달 초월 (1).mp3"
+            },
+            {
+                id: "v_auto_1771239893",
+                label: "영웅 초월 3",
+                transcript: "몸이, 한결 가벼워졌군.",
+                audio: "ondal/fire_ondal/불-온달 초월 (2).mp3"
+            },
+            {
+                id: "v_auto_1771239934",
+                label: "영웅 각성 1",
+                transcript: "그래, 무얼 더 해 드리면 되겠소?",
+                audio: "ondal/fire_ondal/불-온달 각성.mp3"
+            },
+            {
+                id: "v_auto_1771240011",
+                label: "영웅 각성 2",
+                transcript: "예서, 더 커지면 곤란한데. 하하!",
+                audio: "ondal/fire_ondal/불-온달 각성 (1).mp3"
+            },
+            {
+                id: "v_auto_1771240044",
+                label: "영웅 각성 3",
+                transcript: "신통한 비술이라도 있나 보오.",
+                audio: "ondal/fire_ondal/불-온달 각성 (2).mp3"
+            },
+                        {
+                id: "v_auto_1771240212",
+                label: "영웅 화면 1",
+                transcript: "마지막 전투 말이오? 흐음 …. 다른 건 중요치 않소. 나의 주군은 구했으니, 그거면 되었지.",
+                audio: "ondal/fire_ondal/불-온달 영웅창.mp3"
+            },
+            {
+                id: "v_auto_1771240278",
+                label: "영웅 화면 2",
+                transcript: "전하를 처음 뵌 것은, 무과에 급제하기 전이었소. 길을 잃어 흙투성이었던 아이가, 사실은 공주 전하셨다니. 그때는 생각도 못했지.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (1).mp3"
+            },
+            {
+                id: "v_auto_1771240325",
+                label: "영웅 화면 3",
+                transcript: "주군보다 먼저 숨을 거두는 것은, 무인에게 가장 큰 치욕이지. 당신 역시, 이제 나의 주군이니. 걱정 마시오, 끝까지 지켜 드리리다.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (2).mp3"
+            },
+                        {
+                id: "v_auto_1771240619",
+                label: "영웅 화면 4",
+                transcript: "그렇군. 마도대전이라. 그런 일이 있었구려. 혹시, 그 당시 참전한 나라 중에, 가우리는 없었소?",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (3).mp3"
+            },
+            {
+                id: "v_auto_1771240674",
+                label: "영웅 화면 5",
+                transcript: "아슬란이라 하였던가, 나는 그 자를 모르는데. 어쩐지 나를 볼 때면, 표정이 달라지더구려. 아, 사르디나에서 왔다는, 그 두 장수도.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (4).mp3"
+            },
+            {
+                id: "v_auto_1771240761",
+                label: "영웅 화면 6",
+                transcript: "그러니까…. 저 자그마한 아이가, 일국의 지도자란 말이오? 음? 이백 살이 넘었다고? 허! 거, 참. 멀리서 왔다고 농이 지나치시군.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (5).mp3"
+            },
+            {
+                id: "v_auto_1771240843",
+                label: "영웅 화면 7",
+                transcript: "저 자는, 언제 본 모습으로 돌아가는 것이오? 계속 인간의 모습을 하고 있는 것도 퍽 피곤할 터인데. 흠! 그렇소. 저 꼬리가 통통한 치유사 말이오.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (6).mp3"
+            },
+            {
+                id: "v_auto_1771240961",
+                label: "영웅 화면 8",
+                transcript: "가우리에 있을 때에도, 다과를 그리 즐기진 않았소. 높으신 분들이 정취를 느낄 때, 그 뒤를 지키는 편이었지. 그래도, 이 차의 향은 일품이구려. 존함이…. 아, 루미에라 하셨지. 고맙소, 이런 여유는 처음이군. 후후.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (7).mp3"
+            },
+                        {
+                id: "v_auto_1771243131",
+                label: "영웅 화면 9",
+                transcript: "나의 고향 가우리는, 참으로 아름다운 나라였소. 산허리에 걸린 구름을 내려다 보자면, 마치 내가 신선이라도 된 듯하였지. 후, 그리운 곳이오.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (8).mp3"
+            },
+            {
+                id: "v_auto_1771243216",
+                label: "영웅 화면 10",
+                transcript: "그래, 미르에서 오셨다고. 그 나라는 아직도 건재한가 보군. 어찌 보면 당연한 일인가. 탐욕을 양분 삼아, 침략을 일삼았으니. 쯧. 아, 그대들을 비난하는 것은 아니오. 이런 역사도 있었다는 게지.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (9).mp3"
+            },
+            {
+                id: "v_auto_1771243312",
+                label: "영웅 화면 11",
+                transcript: "가장 돌아가고 싶을 때라. 상상은 자유니, 내 마음대로 그려 봐도 되겠소? 후후, 그럼…. 건강한 누이와, 배 곯지 않는 양친. 나의 가족…. 그래, 그것이면 될 듯하오.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (10).mp3"
+            },
+            {
+                id: "v_auto_1771243394",
+                label: "영웅 화면 12",
+                transcript: "타고나길, 글을 읽어내는 데에 어려움이 있다는 것은 알고 있었소. 그래도, 몇 자는 짚어 볼 수 있게 되었지. 호위 무사가 된 후, 전하께서 참 끈질기게도 도와주신 덕분이오.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (11).mp3"
+            },
+            {
+                id: "v_auto_1771243430",
+                label: "영웅 화면 13",
+                transcript: "글보다는, 말이나 그림이 더 편하긴 하지. 때로는, 글로 전할 수 없는 마음도 있으니.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (12).mp3"
+            },
+            {
+                id: "v_auto_1771243491",
+                label: "영웅 화면 14",
+                transcript: "내 삶을, 타인이 마음대로 휘두르게 두진 않을 것이오. 이 길을 선택한 것도 나, 이 끝을 보려는 것도 나. 나의 끝은, 오로지 나만이 맺을 것이오.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (13).mp3"
+            },
+            {
+                id: "v_auto_1771243568",
+                label: "영웅 화면 15",
+                transcript: "눈이…. 무사해서 다행이라고? 그게, 무슨 말이오? 아, 그렇군. 글쎄, 다른 이들이 언제 다친 것인진 모르겠다만, 마지막 전투에서는 부하 덕분에 화를 피할 수는 있었소.",
+                audio: "ondal/fire_ondal/불-온달 영웅창 (14).mp3"
+            }
         ]
     },
     {
