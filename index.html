@@ -303,14 +303,11 @@
             align-items: flex-end;
         }
         #mobileProgress {
-            position: absolute;
-            left: 16px;
-            right: 16px;
-            bottom: 72px;
+            position: static;
             display: none;
-            width: auto;
-            align-items: flex-end;
-            z-index: 9;
+            width: clamp(180px, 60vw, 360px);
+            align-items: center;
+            margin-bottom: 12px;
         }
         .upload-progress-text {
             font-size: 12px;
@@ -343,8 +340,22 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            pointer-events: none;
+            pointer-events: auto;
             padding: 20px 0;
+        }
+        .bottom-twitter {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bottom-twitter a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .bottom-twitter .icon {
+            width: 26px;
+            height: 26px;
         }
         .bottom-credit {
             margin-top: 8px;
@@ -684,7 +695,7 @@
             .app-container {
                 padding: 20px;
                 flex-direction: column;
-                padding-bottom: 120px;
+                padding-bottom: 100px;
             }
             .hero-list {
                 position: fixed;
@@ -711,7 +722,15 @@
                 flex: 0 0 72px;
                 flex-shrink: 0;
             }
-            .bottom-footer { bottom: 160px; }
+            .bottom-footer {
+                position: static;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 24px;
+                padding-bottom: 40px;
+                order: 3;
+            }
             .bottom-footer .upload-progress { display: flex; }
             .transcript-section .upload-progress { display: none; }
             .voice-list-section {
@@ -757,9 +776,17 @@
                 right: 12px;
                 width: 320px;
             }
-            .bottom-footer { bottom: 16px; }
             .transcript-section .upload-progress { display: none; }
-            #mobileProgress { display: flex; }
+            #mobileProgress {
+                display: flex;
+                position: static;
+                left: auto;
+                right: auto;
+                bottom: auto;
+                margin-top: 12px;
+                width: clamp(180px, 60vw, 360px);
+                align-items: center;
+            }
             .mb-progress-wrap { display: none; }
             .mb-time { display: none; }
             .v-divider {
@@ -772,7 +799,7 @@
                 box-shadow: 0 0 10px rgba(137,196,244,0.1);
                 order: 1;
             }
-            body { padding-bottom: 200px; box-sizing: border-box; }
+            body { padding-bottom: 100px; box-sizing: border-box; }
         }
 
     </style>
@@ -845,6 +872,19 @@
              <!-- Dynamic Content will be loaded here via app.js -->
         </section>
         <div class="bottom-footer">
+            <div id="mobileProgress" class="upload-progress">
+                <div class="upload-progress-text"></div>
+                <div class="upload-progress-bar">
+                    <div class="upload-progress-bar-fill"></div>
+                </div>
+            </div>
+            <div class="bottom-twitter">
+                <a href="https://x.com/lohvoice" target="_blank" rel="noopener noreferrer" aria-label="Twitter 바로가기">
+                    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M23.643 4.937c-.835.37-1.732.62-2.675.733a4.657 4.657 0 0 0 2.048-2.57 9.294 9.294 0 0 1-2.946 1.133 4.64 4.64 0 0 0-7.9 4.235 13.162 13.162 0 0 1-9.563-4.848 4.637 4.637 0 0 0 1.435 6.187 4.623 4.623 0 0 1-2.1-.58v.06a4.642 4.642 0 0 0 3.72 4.55 4.676 4.676 0 0 1-2.094.08 4.645 4.645 0 0 0 4.333 3.22A9.304 9.304 0 0 1 1.11 19.29a13.128 13.128 0 0 0 7.115 2.086c8.543 0 13.213-7.077 13.213-13.213 0-.2-.005-.402-.014-.602a9.34 9.34 0 0 0 2.319-2.384z"></path>
+                    </svg>
+                </a>
+            </div>
             <div class="bottom-credit">made by. @gaesaryeo</div>
         </div>
 

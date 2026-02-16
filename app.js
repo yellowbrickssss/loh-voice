@@ -57,7 +57,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     "물 나탈리",
                     "빛 라플라스",
                     "물 라플라스",
-                    "불 라이안",
                     "대지 조슈아",
                     "어둠 이카테스톨",
                     "불 이안",
@@ -76,13 +75,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     "불 바레타",
                     "대지 아슬란",
                     "어둠 아슬란",
-                    "불 아우레아",
                     "대지 아란",
                     "물 아란",
-                    "대지 아리에스",
                     "물 아힐람",
                     "",
-                    "위 영웅들 중 최애가 있다면 꼭 heya4847@gmail.com 으로 보내 주세요!"
+                    "위 영웅들 중 최애가 있다면 꼭 hyeya4847@gmail.com 으로 보내 주세요!",
+                    "확보 완료된 영웅은 혼동을 방지하기 위해 삭제합니다."
                 ].join("\n")
             },
             {
@@ -173,15 +171,6 @@ document.addEventListener('DOMContentLoaded', () => {
         return count;
     }
     function ensureFooterProgress(){
-        const bottom = document.querySelector('.bottom-footer');
-        const container = document.querySelector('.app-container');
-        if (container && bottom && !document.getElementById('mobileProgress')) {
-            const m = document.createElement('div');
-            m.id = 'mobileProgress';
-            m.className = 'upload-progress';
-            m.innerHTML = `<div class="upload-progress-text"></div><div class="upload-progress-bar"><div class="upload-progress-bar-fill"></div></div>`;
-            container.insertBefore(m, bottom);
-        }
         if (transcriptEl && !document.getElementById('uploadProgressDesktop')) {
             const d = document.createElement('div');
             d.id = 'uploadProgressDesktop';

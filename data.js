@@ -365,6 +365,15 @@ const HERO_DATA = [
 
         ]
     },
+        {
+        id: "fire_ondal",
+        name: "온달",
+        element: "fire",
+        title: "끝을 가르는 맹화",
+        image: "ondal/fire_ondal.png",
+        voices: [
+        ]
+    },
     {
         id: "syphfride",
         name: "시프리에드",
@@ -537,9 +546,42 @@ const HERO_DATA = [
                 label: "영웅 화면 1",
                 transcript: "후회하지 않게 해 준다고 하셨죠? 그 말, 어디까지 믿어야 하나요?",
                 audio: "lucilica/lucil (7).mp3"
+            },
+                        {
+                id: "v_auto_1771197473",
+                label: "영웅 화면 2",
+                transcript: "엘프들은, 더 넓은 세상을 바라볼 의무가 있어요. 저와, 그대가 바라는 것처럼.",
+                audio: "lucilica/lucil (9).mp3"
+            },
+            {
+                id: "v_auto_1771197534",
+                label: "영웅 화면 3",
+                transcript: "세상의 모든 이들은 저마다의 가치가 있지요. 아무렇게나 태어난 사람은 없어요. 그대가, 모든 이들에게, 다시 한 번 알려 주세요.",
+                audio: "lucilica/lucil (10).mp3"
+            },
+            {
+                id: "v_auto_1771197642",
+                label: "영웅 화면 4",
+                transcript: "사실 저는 그렇게 나이가 많진 않아요. 수백 년 간 엘프를 지켜온 라플라스에 비하면 어린 아이나 다름없죠. 에? 그래서, 몇 살이냐고요? 그런 걸 묻다니! 실례예요!",
+                audio: "lucilica/lucil (11).mp3"
+            },
+            {
+                id: "v_auto_1771197709",
+                label: "영웅 화면 5",
+                transcript: "종족주의, 민족주의, 요즘 같은 시대엔 어울리지 않죠. 그대처럼 그릇이 큰 사람이 많으면 좋을 텐데.",
+                audio: "lucilica/lucil (12).mp3"
             }
             
         ]    
+    },
+        {
+        id: "fire_laian",
+        name: "라이안",
+        element: "fire",
+        title: "미지를 비추는 용화",
+        image: "laian/fire_laian.png",
+        voices: [
+        ]
     }
     
 ];
