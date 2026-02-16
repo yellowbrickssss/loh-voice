@@ -37,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     "빛 즈라한",
                     "불 즈라한",
                     "물 즈라한",
-                    "물 율",
                     "대지 자이라",
                     "빛 슈나이더",
                     "어둠 슈나이더",
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     "물 라샤드",
                     "불 리카르도",
                     "물 리카르도",
-                    "어둠 라르곤",
                     "대지 오스왈드",
                     "어둠 올가",
                     "물 나탈리",
@@ -61,20 +59,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     "어둠 이카테스톨",
                     "불 이안",
                     "불 헬가",
-                    "어둠 프레하르트",
                     "어둠 프람",
                     "어둠 크롬",
                     "어둠 샬롯",
                     "대지 카를 3세",
-                    "대지 브란두흐",
-                    "대지 브랜든",
                     "물 비앙카",
                     "불 비앙카",
-                    "불 비류",
                     "대지 비류",
                     "불 바레타",
                     "대지 아슬란",
-                    "어둠 아슬란",
                     "대지 아란",
                     "물 아란",
                     "물 아힐람",
@@ -346,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const progressEl = document.getElementById('mbProgress');
         const timeEl = document.getElementById('mbTime');
 
-        bgAudio.volume = 0.35;
-        audio.volume = 0.9;
+        bgAudio.volume = 0.25;
+        audio.volume = 1;
 
         function fmtTime(s){
             if (!isFinite(s)) return '00:00';
@@ -579,7 +572,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     <div class="corner-deco c-tr"></div>
                     <div class="corner-deco c-bl"></div>
                     <div class="corner-deco c-br"></div>
-                    <div class="quote-meta">Select a voice record</div>
+                    <div class="quote-meta">열심히 녹음 중입니다.<br>영웅이 조금 부끄러워 하는 것 같습니다.</div>
                 </div>
             `;
             renderUploadProgress();
@@ -596,9 +589,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="corner-deco c-tr" style="border-color: ${accentColor}"></div>
                 <div class="corner-deco c-bl" style="border-color: ${accentColor}"></div>
                 <div class="corner-deco c-br" style="border-color: ${accentColor}"></div>
-
-                <div class="char-title" style="background: linear-gradient(180deg, #fff, ${accentColor}); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
-                    ${currentHero.name}
+        
+                <div class="char-title">
+                    <span class="char-name" style="background: linear-gradient(180deg, #fff, ${accentColor}); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">
+                        ${currentHero.name}
+                    </span>
+                    ${currentHero.title ? `<span class="char-title-sub" style="color:${accentColor};">${currentHero.title}</span>` : ''}
                 </div>
                 <div class="quote-text" style="border-left-color: ${accentColor}">
                     "${voice.transcript}"
@@ -607,8 +603,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 <div class="quote-meta" style="color: ${accentColor}">
                     ${voice.label} | ${currentHero.element.toUpperCase()}
                 </div>
-                <!-- Hidden Audio Element for Playback -->
-                <!-- <audio src="${voice.audio}" autoplay></audio> --> 
             </div>
         `;
         const canvas = transcriptEl.querySelector('.quote-visualizer canvas');
