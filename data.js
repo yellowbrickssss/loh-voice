@@ -578,6 +578,42 @@ const HERO_DATA = [
                 label: "영웅 화면 1",
                 transcript: "자리를 비우신 동안 주류 창고가 싹, 비었다고요. 빨리 다시 채워 주세요. 그게 조건 중 하나였잖아요.",
                 audio: "syphfride/light_syphfride (8).mp3"
+            },
+                        {
+                id: "v_auto_1771289976",
+                label: "영웅 화면 2",
+                transcript: "일하다 쓰러지면, 제가 귀찮아집니다. 자신의 몸 정도는 스스로 챙기세요.",
+                audio: "syphfride/light_syphfride/영웅화면2.mp3"
+            },
+            {
+                id: "v_auto_1771290033",
+                label: "영웅 화면 3",
+                transcript: "하아, 당신들은 50년이 지나도 달라진 게 하나도 없군요. 좋아요! 아주 멋져요. 다들 계속 더 해 보시죠?",
+                audio: "syphfride/light_syphfride/영웅화면3.mp3"
+            },
+            {
+                id: "v_auto_1771290085",
+                label: "영웅 화면 4",
+                transcript: "크메르사트, 편히 잠드세요. 당신의 동반자는 아직 때가 되지 아니했으니, 계속 기다리지 말고.",
+                audio: "syphfride/light_syphfride/영웅화면4.mp3"
+            },
+            {
+                id: "v_auto_1771290163",
+                label: "영웅 화면 5",
+                transcript: "모두가 떠나고 나면, 브랜든과, 저밖에 남지 않겠죠. 형언할 수 없는 시간이 흐르더라도, 함께 과거를 기억해 줄 친구가 하나 정도는 있겠네요.",
+                audio: "syphfride/light_syphfride/영웅화면5.mp3"
+            },
+            {
+                id: "v_auto_1771290245",
+                label: "영웅 화면 6",
+                transcript: "브랜든은 자신의 과거를 들추는 것을 싫어합니다. 과거의 인연이라든가, 옛 이름인 브란두흐로 불리는 걸 굉장히 싫어하죠. 조심하는 것이 좋을 거예요.",
+                audio: "syphfride/light_syphfride/영웅화면6.mp3"
+            },
+                        {
+                id: "v_auto_1771290599",
+                label: "영웅 화면 7",
+                transcript: "아슬란, 하아…. 무턱대고 나서지 말라고 매번 말하는데도 듣지 않는 놈이죠. 본인도 그걸 아는지, 다칠 때마다 티도 못 내고, 끙끙거리기나 하고.",
+                audio: "syphfride/light_syphfride/영웅화면7.mp3"
             }
 
         ]
@@ -987,6 +1023,30 @@ const HERO_DATA = [
                 label: "영웅 화면 8",
                 transcript: "특임대 녀석들은 죄다 일 중독자밖에 없어서 조금 낮잠이라도 잘까 하면 우르르 쳐들어와서 떽떽거리는데…. 아…….",
                 audio: "joshua/joshua (14).mp3"
+            },
+                        {
+                id: "v_auto_1771281815",
+                label: "영웅 화면 9",
+                transcript: "부모 얼굴도 기억 안 나고, 가족도 있었는지 없었는지 모르겠지만, 별로 상관 없습니다.",
+                audio: "joshua/joshua (15).mp3"
+            },
+            {
+                id: "v_auto_1771281868",
+                label: "영웅 화면 10",
+                transcript: "여러 가지 실험을 많이 받았던 기억은 있습니다. 당시에는 고통스러웠던 것 같은데, 지금은 아니니까 뭐.",
+                audio: "joshua/joshua (16).mp3"
+            },
+            {
+                id: "v_auto_1771281931",
+                label: "영웅 화면 11",
+                transcript: "몸이 편해야 마음도 편하다…. 이런 말이 있죠. 저는 마음의 안식을 가장 높은 가치로 두는 사람입니다.",
+                audio: "joshua/joshua (17).mp3"
+            },
+            {
+                id: "v_auto_1771281992",
+                label: "영웅 화면 12",
+                transcript: "그래도, 특임대 녀석들이 없었으면 좀 심심하긴 했겠죠. 일일이 챙겨준다고 하는 것도 귀찮지만, 나쁘진 않았으니까.",
+                audio: "joshua/joshua (18).mp3"
             }
         ]
     }
