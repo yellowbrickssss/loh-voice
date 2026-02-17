@@ -374,15 +374,99 @@ const HERO_DATA = [
 //        voices: [
 //        ]
 //    },
-//        {
-//        id: "dark_brandon",
-//        name: "브랜든",
-//        element: "dark",
-//        title: "무저갱을 비추는 광명",
-//        image: "brandon/dark_brandon.png",
-//        voices: [
-//        ]
-//    },
+        {
+        id: "dark_brandon",
+        name: "브랜든",
+        element: "dark",
+        title: "무저갱을 비추는 광명",
+        image: "brandon/dark_brandon.png",
+        voices: [
+                        {
+                id: "v_auto_1771325133",
+                label: "자기소개",
+                transcript: "불멸자에게 허락된 안식은 없다.",
+                audio: "brandon/dark_brandon/어둠-브랜든 자기소개.mp3"
+            },
+            {
+                id: "v_auto_1771325175",
+                label: "영웅 영입 1",
+                transcript: "나는 너의 도움이 되고자 할 테니, 너 또한 그런 마음이길 바라겠다.",
+                audio: "brandon/dark_brandon/어둠-브랜든 영입.mp3"
+            },
+            {
+                id: "v_auto_1771325226",
+                label: "영웅 영입 2",
+                transcript: "브랜든 카스다. 이용하고 이용 당하는 이 관계, 얼마나 갈지, 지켜 보도록 하지.",
+                audio: "brandon/dark_brandon/어둠-브랜든 영입 (1).mp3"
+            },
+            {
+                id: "v_auto_1771325257",
+                label: "영웅 초월 1",
+                transcript: "나쁜 기분은 아니군.",
+                audio: "brandon/dark_brandon/어둠-브랜든 초월.mp3"
+            },
+            {
+                id: "v_auto_1771325274",
+                label: "영웅 초월 2",
+                transcript: "나를 더 즐겁게 해 봐라.",
+                audio: "brandon/dark_brandon/어둠-브랜든 초월 (1).mp3"
+            },
+            {
+                id: "v_auto_1771325299",
+                label: "영웅 초월 3",
+                transcript: "나를 더 강하게 만들어서 어쩔 생각이지?",
+                audio: "brandon/dark_brandon/어둠-브랜든 초월 (2).mp3"
+            },
+            {
+                id: "v_auto_1771325319",
+                label: "영웅 초월 4",
+                transcript: "아직 성장할 여지가 남아 있었나?",
+                audio: "brandon/dark_brandon/어둠-브랜든 초월 (3).mp3"
+            },
+                        {
+                id: "v_auto_1771325843",
+                label: "영웅 각성 1",
+                transcript: "아, 조금 더 많은 것이 느껴지는군.",
+                audio: "brandon/dark_brandon/어둠-브랜든 각성.mp3"
+            },
+            {
+                id: "v_auto_1771325883",
+                label: "영웅 각성 2",
+                transcript: "제약이 풀리고 있나….",
+                audio: "brandon/dark_brandon/어둠-브랜든 각성 (1).mp3"
+            },
+            {
+                id: "v_auto_1771325909",
+                label: "영웅 각성 3",
+                transcript: "허, 하, 하하! 이 정도일 줄이야.",
+                audio: "brandon/dark_brandon/어둠-브랜든 각성 (2).mp3"
+            },
+                        {
+                id: "v_auto_1771326188",
+                label: "타이틀 콜",
+                transcript: "Lord Of Heroes.",
+                audio: "brandon/dark_brandon/어둠-브랜든 타이틀콜.mp3"
+            },
+            {
+                id: "v_auto_1771326242",
+                label: "영웅 화면 1",
+                transcript: "게으른 녀석, 필멸자의 시간을 소중히 쓰도록 해라.",
+                audio: "brandon/dark_brandon/어둠-브랜든 영웅창.mp3"
+            },
+            {
+                id: "v_auto_1771326294",
+                label: "영웅 화면 2",
+                transcript: "하아….너를 기다리느라 무료함이 길어졌다.",
+                audio: "brandon/dark_brandon/어둠-브랜든 영웅창 (1).mp3"
+            },
+            {
+                id: "v_auto_1771326323",
+                label: "영웅 화면 3",
+                transcript: "나는 상관없지만, 하아, 너만 바라보는 다른 녀석들을 생각해라.",
+                audio: "brandon/dark_brandon/어둠-브랜든 영웅창 (2).mp3"
+            }
+        ]
+       },
 //        {
 //        id: "earth_brandon",
 //        name: "브랜든",
