@@ -15,7 +15,7 @@
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2') format('woff2');font-weight:700;font-display:swap}
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');font-weight:800;font-display:swap}
 @font-face{font-family:'Suit';src:url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Heavy.woff2') format('woff2');font-weight:900;font-display:swap}
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&family=Share+Tech+Mono&family=Libre+Barcode+39+Text&display=swap');
 
         :root {
             /* Palette: Deep Night Sky & Emotional Blue */
@@ -849,7 +849,7 @@
             }
             .footer-spacer {
                 position: static;
-                order: 3;
+                order: 4;
             }
             .bottom-footer {
                 position: static;
@@ -970,65 +970,100 @@
                 order: 1;
             }
             body { padding-bottom: 100px; box-sizing: border-box; }
+            .receipt-shell {
+                position: static;
+                left: auto;
+                bottom: auto;
+                margin: 24px auto 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                order: 3;
+            }
+            .receipt-toggle-btn {
+                padding: 10px 18px;
+                border-radius: 999px;
+                font-size: 13px;
+            }
         }
-
+        
+        .receipt-shell {
+            position: fixed;
+            left: 320px;
+            bottom: 48px;
+            z-index: 8;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
         .receipt-widget {
-            margin-top: 12px;
+            position: fixed;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0,0,0,0.55);
+            z-index: 120;
+            padding: 24px;
         }
         .receipt-widget.hidden {
             display: none;
         }
         .receipt-toggle-btn {
-            padding: 6px 10px;
-            border-radius: 18px;
+            padding: 10px 20px;
+            border-radius: 999px;
             border: 1px solid rgba(148, 163, 184, 0.8);
             background: rgba(15, 23, 42, 0.9);
             color: #e2e8f0;
-            font-size: 11px;
+            font-size: 13px;
             cursor: pointer;
             display: inline-flex;
             align-items: center;
-            gap: 4px;
-            margin-top: 16px;
+            gap: 6px;
+            margin-top: 0;
         }
         .receipt-toggle-btn:hover {
             background: rgba(30, 41, 59, 0.95);
         }
         .receipt-paper {
             background: #fff;
-            width: 260px;
-            padding: 14px 16px 22px 16px;
-            box-shadow: 0 0 18px rgba(0, 0, 0, 0.65);
+            width: 350px;
+            padding: 20px 20px 30px 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
             font-family: "Share Tech Mono", monospace;
-            text-align: left;
-            color: #222;
-            transform: rotate(-1.2deg);
+            text-align: center;
+            color: #333;
+            transform: rotate(-1deg);
             position: relative;
-            letter-spacing: -0.4px;
-            line-height: 1.35;
+            letter-spacing: -0.5px;
+            line-height: 1.4;
+            max-height: 80vh;
+            overflow-y: auto;
+            margin-bottom: 20px;
         }
         .receipt-paper::before {
             content: "";
             position: absolute;
-            top: -8px;
+            top: -10px;
             left: 0;
             width: 100%;
-            height: 8px;
+            height: 10px;
             background: linear-gradient(135deg, transparent 50%, #fff 50%), linear-gradient(225deg, transparent 50%, #fff 50%);
             background-position: 0 0;
-            background-size: 8px 8px;
+            background-size: 10px 10px;
             background-repeat: repeat-x;
         }
         .receipt-paper::after {
             content: "";
             position: absolute;
-            bottom: -8px;
+            bottom: -10px;
             left: 0;
             width: 100%;
-            height: 8px;
+            height: 10px;
             background: linear-gradient(135deg, #fff 50%, transparent 50%), linear-gradient(225deg, #fff 50%, transparent 50%);
             background-position: 0 0;
-            background-size: 8px 8px;
+            background-size: 10px 10px;
             background-repeat: repeat-x;
         }
         .receipt-title {
@@ -1090,16 +1125,13 @@
             word-break: break-all;
         }
         .receipt-barcode {
-            height: 42px;
-            margin: 10px 0 4px;
-            background-image: repeating-linear-gradient(
-                to right,
-                #000,
-                #000 2px,
-                transparent 2px,
-                transparent 4px
-            );
-            opacity: 0.85;
+            font-family: "Libre Barcode 39 Text", cursive;
+            font-size: 24px;
+            margin: 10px 0;
+            width: 100%;
+            overflow: hidden;
+            white-space: nowrap;
+            text-align: center;
         }
         .receipt-serial {
             font-size: 10px;
@@ -1111,6 +1143,17 @@
             text-align: center;
         }
 
+        @media (max-width: 900px) {
+            .receipt-shell {
+                position: static;
+                left: auto;
+                bottom: auto;
+                margin: 24px auto 0;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -1266,12 +1309,21 @@
             <div class="voice-list-inner">
                  <!-- Dynamic Content will be loaded here via app.js -->
             </div>
+        </section>
+
+        <div class="v-divider"></div>
+
+        <!-- Right: Transcript -->
+        <section class="transcript-section">
+             <!-- Dynamic Content will be loaded here via app.js -->
+        </section>
+        <div class="receipt-shell">
             <button class="receipt-toggle-btn" id="receiptToggle" type="button" aria-label="영웅 대사 영수증 열기/닫기">
-                🧾
+                🧾 Entry Permit
             </button>
             <div class="receipt-widget hidden" id="receiptWidget" role="group" aria-label="로드오브히어로즈 영웅 대사 영수증">
                 <div class="receipt-paper">
-                    <div class="receipt-title">receipt</div>
+                    <div class="receipt-title">entry permit</div>
                     <div class="receipt-divider"></div>
                     <div class="receipt-label">The Hero said… :</div>
                     <div class="receipt-quote" id="receiptQuote"></div>
@@ -1281,19 +1333,13 @@
                     <div class="receipt-daily-value">Daily Value ∞</div>
                     <div class="receipt-ingredients-container" id="receiptIngredients"></div>
                     <div class="receipt-divider"></div>
-                    <div class="receipt-barcode"></div>
+                    <p class="receipt-barcode" id="receiptBarcode"></p>
                     <div class="receipt-serial" id="receiptSerial"></div>
                     <div class="receipt-footer">"로드! 또 와 줄 거지?"</div>
                 </div>
+                <button id="receiptDownloadBtn" type="button" style="margin-top: 20px; padding: 8px 16px; border-radius: 4px; border: 1px solid #cbd5f5; background: #0f172a; color: #e2e8f0; font-size: 11px; cursor: pointer;">DOWNLOAD</button>
             </div>
-        </section>
-
-        <div class="v-divider"></div>
-
-        <!-- Right: Transcript -->
-        <section class="transcript-section">
-             <!-- Dynamic Content will be loaded here via app.js -->
-        </section>
+        </div>
         <div class="footer-spacer">
             <div class="bottom-footer">
                 <div id="mobileProgress" class="upload-progress">
@@ -1348,5 +1394,6 @@
         }
     </script>
     <script src="visualizer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>
 </html>

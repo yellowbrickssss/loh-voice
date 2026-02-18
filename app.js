@@ -658,11 +658,45 @@ function init() {
     function initReceiptWidget(){
         const root = document.getElementById('receiptWidget');
         if (!root) return;
+        root.classList.add('hidden');
         const quoteEl = document.getElementById('receiptQuote');
         const heroEl = document.getElementById('receiptHeroMeta');
         const ingEl = document.getElementById('receiptIngredients');
         const serialEl = document.getElementById('receiptSerial');
         if (!quoteEl || !heroEl || !ingEl || !serialEl) return;
+
+        const pool = buildHeroVoicePool();
+        function fill(){
+            const pair = pool.length ? pickRandom(pool) : null;
+            if (pair && pair.hero && pair.voice) {
+                quoteEl.textContent = `"${pair.voice.transcript}"`;
+                const elementLabel = RECEIPT_ELEMENT_LABELS[pair.hero.element] || pair.hero.element || "";
+                heroEl.textContent = elementLabel ? `${pair.hero.name} / ${elementLabel}` : pair.hero.name;
+            } else {
+                quoteEl.textContent = '"..."';
+                heroEl.textContent = "영웅 데이터 없음";
+            }
+            const ingredients = pickRandomIngredients();
+            ingEl.innerHTML = "";
+            ingredients.forEach(item=>{
+                const row = document.createElement('div');
+                row.className = 'receipt-ingredient-item';
+                const labelSpan = document.createElement('span');
+                labelSpan.className = 'receipt-ingredient-label';
+                labelSpan.textContent = cleanReceiptLabel(item.label);
+                const valueSpan = document.createElement('span');
+                valueSpan.className = 'receipt-ingredient-data';
+                valueSpan.textContent = "· " + buildIngredientValue(item);
+                row.appendChild(labelSpan);
+                row.appendChild(valueSpan);
+                ingEl.appendChild(row);
+            });
+            const count = getReceiptVisitCount();
+            const serial = formatSerialNumber(count);
+            serialEl.textContent = `일련번호 ${serial}`;
+            const barcodeEl = document.getElementById('receiptBarcode');
+            if (barcodeEl) barcodeEl.textContent = `*${serial}*`;
+        }
 
         const toggleBtn = document.getElementById('receiptToggle');
         if (toggleBtn) {
@@ -673,42 +707,17 @@ function init() {
             }
             toggleBtn.addEventListener('click', ()=>{
                 open = !open;
+                if (open) fill();
                 sync();
+            });
+            root.addEventListener('click',(e)=>{
+                if (e.target === root){
+                    open = false;
+                    sync();
+                }
             });
             sync();
         }
-
-        const pool = buildHeroVoicePool();
-        const pair = pool.length ? pickRandom(pool) : null;
-
-        if (pair && pair.hero && pair.voice) {
-            quoteEl.textContent = `"${pair.voice.transcript}"`;
-            const elementLabel = RECEIPT_ELEMENT_LABELS[pair.hero.element] || pair.hero.element || "";
-            heroEl.textContent = elementLabel ? `${pair.hero.name} / ${elementLabel}` : pair.hero.name;
-        } else {
-            quoteEl.textContent = '"..."';
-            heroEl.textContent = "영웅 데이터 없음";
-        }
-
-        const ingredients = pickRandomIngredients();
-        ingEl.innerHTML = "";
-        ingredients.forEach(item=>{
-            const row = document.createElement('div');
-            row.className = 'receipt-ingredient-item';
-            const labelSpan = document.createElement('span');
-            labelSpan.className = 'receipt-ingredient-label';
-            labelSpan.textContent = item.label;
-            const valueSpan = document.createElement('span');
-            valueSpan.className = 'receipt-ingredient-data';
-            valueSpan.textContent = buildIngredientValue(item);
-            row.appendChild(labelSpan);
-            row.appendChild(valueSpan);
-            ingEl.appendChild(row);
-        });
-
-        const count = getReceiptVisitCount();
-        const serial = formatSerialNumber(count);
-        serialEl.textContent = `일련번호 ${serial}`;
     }
     function buildHeroVoicePool(){
         const pool = [];
@@ -745,6 +754,16 @@ function init() {
         const unit = item.unit || "%";
         return String(value)+unit;
     }
+    function cleanReceiptLabel(text){
+        if (typeof text !== "string") return "";
+        let t = text;
+        // 예시로 넣어둔 "... nnn회" 같은 패턴은 통째로 제거
+        t = t.replace(/\s*\.{2,}\s*n{2,4}(회|일|번)/g, "");
+        // 끝에 달린 "..." 도 제거
+        t = t.replace(/\s*\.{2,}\s*$/g, "");
+        t = t.replace(/\s+/g," ").trim();
+        return t;
+    }
     function getReceiptVisitCount(){
         const key = "loh_receipt_visit_count";
         try {
@@ -764,4 +783,30 @@ function init() {
         return base + padded;
     }
 
+    function initReceiptDownload(){
+        const btn = document.getElementById('receiptDownloadBtn');
+        const paper = document.querySelector('.receipt-paper');
+        if (!btn || !paper) return;
+        btn.addEventListener('click', ()=>{
+            if (typeof html2canvas !== "function") return;
+            html2canvas(paper, {
+                backgroundColor: "#ffffff",
+                scale: window.devicePixelRatio || 1
+            }).then(canvas=>{
+                canvas.toBlob(blob=>{
+                    if (!blob) return;
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'loh-entry-permit.png';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            });
+        });
+    }
+
 init();
+initReceiptDownload();
