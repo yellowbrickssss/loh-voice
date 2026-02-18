@@ -1381,7 +1381,25 @@
         </div>
     </div>
 
-    
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyDX-MxKbl4rWE_ICXiEj-LkE71L_PXMtF8",
+            authDomain: "receipt-counter-e69ab.firebaseapp.com",
+            databaseURL: "https://receipt-counter-e69ab-default-rtdb.firebaseio.com",
+            projectId: "receipt-counter-e69ab",
+            storageBucket: "receipt-counter-e69ab.firebasestorage.app",
+            messagingSenderId: "95724125160",
+            appId: "1:95724125160:web:dd69aa000e3a9368dc025d"
+        };
+        if (typeof firebase === "object" && firebase && typeof firebase.initializeApp === "function") {
+            if (!firebase.apps || !firebase.apps.length) {
+                firebase.initializeApp(firebaseConfig);
+            }
+        }
+    </script>
+
     <!-- Data & Scripts -->
     <script src="data.js"></script>
     <script src="ondal/ondal.js"></script>

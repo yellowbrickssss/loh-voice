@@ -691,11 +691,12 @@ function init() {
                 row.appendChild(valueSpan);
                 ingEl.appendChild(row);
             });
-            const count = getReceiptVisitCount();
-            const serial = formatSerialNumber(count);
-            serialEl.textContent = `일련번호 ${serial}`;
-            const barcodeEl = document.getElementById('receiptBarcode');
-            if (barcodeEl) barcodeEl.textContent = `*${serial}*`;
+            getGlobalReceiptVisitCount().then(count=>{
+                const serial = formatSerialNumber(count);
+                serialEl.textContent = `일련번호 ${serial}`;
+                const barcodeEl = document.getElementById('receiptBarcode');
+                if (barcodeEl) barcodeEl.textContent = `*${serial}*`;
+            });
         }
 
         const toggleBtn = document.getElementById('receiptToggle');
@@ -774,6 +775,30 @@ function init() {
             return next;
         } catch (e){
             return 1;
+        }
+    }
+    function getGlobalReceiptVisitCount(){
+        if (typeof firebase !== "object" || !firebase || typeof firebase.database !== "function") {
+            return Promise.resolve(1);
+        }
+        try {
+            const db = firebase.database();
+            const ref = db.ref("receiptCount");
+            return new Promise(resolve=>{
+                ref.transaction(currentValue=>{
+                    return (currentValue || 0) + 1;
+                }, (error, committed, snapshot)=>{
+                    if (error || !committed || !snapshot) {
+                        resolve(1);
+                        return;
+                    }
+                    const value = snapshot.val();
+                    const num = typeof value === "number" && isFinite(value) ? value : 1;
+                    resolve(num);
+                });
+            });
+        } catch (e){
+            return Promise.resolve(1);
         }
     }
     function formatSerialNumber(count){
