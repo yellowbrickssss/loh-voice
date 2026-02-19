@@ -664,6 +664,102 @@ const HERO_DATA = [
                 label: "영웅 화면 21",
                 transcript: "넌 애송이지만, 하면 할 수 있는 애송이잖냐. 믿고 있다!",
                 audio: "rosanna/water_rosanna/물-로잔나 영웅창 (20).mp3"
+            },
+                        {
+                id: "v_auto_1771464946",
+                label: "영웅 화면 22",
+                transcript: "헬가! 한참 찾았잖아! 어딜 갔다 이제 오는 거야? 왜? 내가 부르면 안 돼냐? 그 애송이 녀석이 부르면 쪼르르 따라 가면서. 엉? 이제 아발론 소속이다, 이거지. 아주 그냥 제 고향은 잊어버렸다, 이거지?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (21).mp3"
+            },
+            {
+                id: "v_auto_1771465015",
+                label: "영웅 화면 23",
+                transcript: "발터! 정신을 어디다 빼놓고 다니는 거냐? 어? 내가 왔는데 인사도 안 하고, 아는 척도 안 하고! 다 컸다, 이거냐?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (22).mp3"
+            },
+            {
+                id: "v_auto_1771465101",
+                label: "영웅 화면 24",
+                transcript: "아슬란 녀석. 처음 만났을 때와 비교하면, 아주 그냥 용 됐지. 흥! 왕이라고 해서, 나한테 무슨 대접이라도 받을 생각을 했다면, 아주 큰 오산이지만?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (23).mp3"
+            },
+            {
+                id: "v_auto_1771465156",
+                label: "영웅 화면 25",
+                transcript: "그래. 매일 아침 꽃을 가져다 주던 견인족 아이가 있었는데…. 이상하게 잘 떠오르질 않는군.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (24).mp3"
+            },
+            {
+                id: "v_auto_1771465237",
+                label: "영웅 화면 26",
+                transcript: "비앙카를 후계자로 점찍은 이유 말이냐? 흥! 보면 모르나? 저런 애를 두고도 못 알아보면 그거야말로 지도자 자격이 없는 거지. 그래, 지금까지의 사르디나와는 다른 시대가 올 거다. 비앙카는…. 그걸 해낼 수 있는 아이니까.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (25).mp3"
+            },
+            {
+                id: "v_auto_1771465293",
+                label: "영웅 화면 27",
+                transcript: "망할 똥강아지 녀석! 말도 없이 튀어나가서는 돌아오지도 않고, 사고만 치고! 어디 깨져서 오기만 해봐라. 사르디나 앞바다에 손가락 하나 들이밀지 못하게 해주지!",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (26).mp3"
+            },
+            {
+                id: "v_auto_1771465402",
+                label: "영웅 화면 28",
+                transcript: "나에겐 사르디나가 전부야. 이건 그 무엇과도 타협할 수 없는 문제지. 알겠냐? 만약 최악의 상황이 닥친다면, 사르디나를 우선 순위로 둘 수밖에 없다는 걸.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (27).mp3"
+            },
+            {
+                id: "v_auto_1771465499",
+                label: "영웅 화면 29",
+                transcript: "야! 지위라는 건 힘으로만 하는 게 아니지만 그래도 너는, 좀 정도가 심했다? 고작 세 바퀴 뛰고 지친다는 게 가당키나 해? 그것도, 너처럼 젊은 녀석이 말이다!",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (28).mp3"
+            },
+            {
+                id: "v_auto_1771465568",
+                label: "영웅 화면 30",
+                transcript: "크메르사트…. 너에게는 할 말이 참 많지. 그래, 언젠가…. 그때 나누지 못한 이야기를 마저 하자꾸나.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (29).mp3"
+            },
+                        {
+                id: "v_auto_1771466067",
+                label: "영웅화면 31",
+                transcript: "베로니카…. 심해는 어둡지 않으려나? 너는 태양빛을 참 좋아했는데, 답답하지는 않을까? 나는 잘 있어. 여전히, 건강하게.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (30).mp3"
+            },
+                        {
+                id: "v_auto_1771496057",
+                label: "영웅 화면 32",
+                transcript: "어째 애들이 갈수록 버릇이 없어지는 것 같냐? 아, 너네, 그 왜, 강아지 같은 애! 나보고 뭐, 할머니?! 아휴, 교육 똑바로 안 시켜?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (31).mp3"
+            },
+            {
+                id: "v_auto_1771496164",
+                label: "영웅 화면 33",
+                transcript: "꼬맹아, 왜? 뭐가 좋다고 자꾸 힐끔힐끔 쳐다보냐? 뭐? 나이가 비슷한 줄 알았다고? 응, 그럴 수도 있지. 실수 한 번 정도는 용서해 줄 수 있어. 다음부터는 그러지 마라. 통영니임, 하고 부르는 거야. 알겠어?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (32).mp3"
+            },
+            {
+                id: "v_auto_1771496236",
+                label: "영웅 화면 34",
+                transcript: "애송아, 여기는 바다랑 멀지도 않으면서, 왜 생선 요리를 제대로 하는 집이 없는 거야? 뭐? 왕실 요리사한테 농어 스테이크를 부탁해 보겠다고? 흥, 제대로 내오지 않으면 입에 가져다 대지도 않을 거다. 알겠냐?",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (33).mp3"
+            },
+            {
+                id: "v_auto_1771496302",
+                label: "영웅 화면 35",
+                transcript: "야, 무슨 일이든 한계가 있다는 건, 내가 제일 잘 알아. 어쭙잖은 깊이로 나를 재단하려 들지 마라. 그래. 앞으로 찾아올 세상에 대한 준비도, 내 힘으로 해낼 거야. 항상 그래웠으니까.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (34).mp3"
+            },
+            {
+                id: "v_auto_1771496362",
+                label: "영웅 화면 36",
+                transcript: "흥! 내가 노망난 브랜든 그 놈처럼 늙어 죽지도 않는다고 생각하는 거냐? 애송아, 기본적으로 이 땅을 밟고 서 있는 그 모든 생명에는 끝이 있다. 지도자라면, 너도 그 사실을 항상 염두해 두도록 해.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (35).mp3"
+            },
+            {
+                id: "v_auto_1771496464",
+                label: "영웅 화면 37",
+                transcript: "부담? 아주 속 편한 소리하고 앉았네. 그런 걸 느낄 시간에 펜을 굴려야지! 설령 예기치 못한 재난이 닥쳐와도, 우린 두려움에 떨어서는 안 돼. 가슴을 펴고! 당당하게 맞서야지! 그게 책임을 지기로 정한 자의 도리다.",
+                audio: "rosanna/water_rosanna/물-로잔나 영웅창 (36).mp3"
             }
         ]
     },
@@ -891,6 +987,24 @@ const HERO_DATA = [
                 audio: "lucilica/lucil (36).mp3"
             }
         ]    
+    },
+        {
+        id: "light_johan",
+        name: "요한",
+        element: "light",
+        title: "광명의 기사",
+        image: "johan/light_johan/light_johan.png",
+        voices: [
+        ]
+    },
+        {
+        id: "dark_johan",
+        name: "요한",
+        element: "dark",
+        title: "악을 심판하는 자",
+        image: "johan/dark_johan/dark_johan.png",
+        voices: [
+        ]
     },
     {
         id: "dark_mikhail",

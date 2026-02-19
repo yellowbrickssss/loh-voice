@@ -12,6 +12,7 @@ const bgAudio = new Audio();
 const visualizer = new VisualizerController();
 let musicIndex = 0;
 let shuffleOn = false;
+let repeatOneOn = false;
 let uploadProgress = { total: 0 };
 let heroSearchTerm = '';
 const ARCHIVE_TARGET_TOTAL_VOICES = 10080;
@@ -26,6 +27,7 @@ const MUSIC_PLAYLIST = (window.MUSIC_PLAYLIST && window.MUSIC_PLAYLIST.length)
         { title: "빛의 시작(My First Light)", artist: "수안 (퍼플키스)", src: "music/수안 (퍼플키스)-01-빛의 시작(My First Light).mp3"},
         { title: "Chance (Inst.)", artist: "엔플라잉 (N.Flying)", src: "music/엔플라잉 (N.Flying)-03-Chance (Inst.).mp3"},
         { title: "Eternal Bloom (Korean Version)", artist: "윤마치 (MRCH)", src: "music/윤마치 (MRCH)-01-Eternal Bloom (Korean Version).mp3"},
+        { title: "War Of The Tyrants (마도대전 OST)", artist: "", src: "music/War Of The Tyrants (Edit).mp3"},
     ];
 const PATCH_NOTES = (window.PATCH_NOTES && window.PATCH_NOTES.length)
     ? window.PATCH_NOTES
@@ -375,7 +377,9 @@ function init() {
             btnPlay.classList.remove('playing');
         }
         function next(){
-            if (shuffleOn && MUSIC_PLAYLIST.length>1){
+            if (repeatOneOn) {
+                load(musicIndex);
+            } else if (shuffleOn && MUSIC_PLAYLIST.length>1){
                 let n = musicIndex;
                 while(n===musicIndex) n = Math.floor(Math.random()*MUSIC_PLAYLIST.length);
                 load(n);
@@ -411,8 +415,18 @@ function init() {
             if (bgAudio.paused) play(); else pause();
         });
         btnShuffle.addEventListener('click', ()=>{
-            shuffleOn = !shuffleOn;
-            btnShuffle.classList.toggle('active', shuffleOn);
+            if (!shuffleOn && !repeatOneOn) {
+                shuffleOn = true;
+                repeatOneOn = false;
+            } else if (shuffleOn && !repeatOneOn) {
+                shuffleOn = false;
+                repeatOneOn = true;
+            } else {
+                shuffleOn = false;
+                repeatOneOn = false;
+            }
+            btnShuffle.classList.toggle('active', shuffleOn || repeatOneOn);
+            btnShuffle.classList.toggle('repeat-one', repeatOneOn);
         });
         btnList.addEventListener('click', ()=>{
             acc.classList.toggle('open');
