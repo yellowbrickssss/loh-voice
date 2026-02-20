@@ -26,7 +26,7 @@ let shuffleOn = false;
 let repeatOneOn = false;
 let uploadProgress = { total: 0 };
 let heroSearchTerm = '';
-const ARCHIVE_TARGET_TOTAL_VOICES = 10080;
+const ARCHIVE_TARGET_TOTAL_VOICES = 10285;
 const MUSIC_PLAYLIST = (window.MUSIC_PLAYLIST && window.MUSIC_PLAYLIST.length)
     ? window.MUSIC_PLAYLIST
     : [

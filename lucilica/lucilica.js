@@ -224,15 +224,15 @@ const LUCILICA_DATA = [
             }
         ]
     },
-        {
-        id: "earth_lucilica",
-        name: "루실리카",
-        element: "earth",
-        title: "타협을 거부하는 의지",
-        image: "lucilica/earth_lucilica.png",
-        voices: [
-        ]
-    }
+//        {
+//        id: "earth_lucilica",
+//        name: "루실리카",
+//        element: "earth",
+//        title: "타협을 거부하는 의지",
+//        image: "lucilica/earth_lucilica.png",
+//        voices: [
+//        ]
+//    }
 ];
 
 if (typeof window !== "undefined") {
