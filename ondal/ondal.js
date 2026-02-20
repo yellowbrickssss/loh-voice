@@ -515,6 +515,9 @@ const ONDAL_DATA = [
     }
 ];
 
-if (typeof window !== "undefined" && Array.isArray(window.HERO_DATA)) {
-    HERO_DATA.splice(0, 0, ...ONDAL_DATA);
+if (typeof window !== "undefined") {
+    if (!Array.isArray(window.HERO_DATA)) {
+        window.HERO_DATA = [];
+    }
+    window.HERO_DATA.push(...ONDAL_DATA);
 }

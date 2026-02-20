@@ -252,17 +252,15 @@
     </script>
 
     <!-- Data & Scripts -->
-    <script src="data.js"></script>
     <script src="ondal/ondal.js"></script>
+    <script src="syphfride/syphfride.js"></script>
     <script src="miriande/miriande.js"></script>
+    <script src="brandon/brandon.js"></script>
+    <script src="rosanna/rosanna.js"></script>
+    <script src="lucilica/lucilica.js"></script>
     <script src="johan/johan.js"></script>
-    <script>
-        if (Array.isArray(window.HERO_DATA) && Array.isArray(MIRIANDE_DATA)) {
-            const index = HERO_DATA.findIndex(hero => hero.id === "syphfride");
-            const insertIndex = index === -1 ? HERO_DATA.length : index + 1;
-            HERO_DATA.splice(insertIndex, 0, ...MIRIANDE_DATA);
-        }
-    </script>
+    <script src="mikhail/mikhail.js"></script>
+    <script src="joshua/joshua.js"></script>
     <script src="visualizer.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script src="app.js"></script>

@@ -3,6 +3,17 @@ const heroListEl = document.querySelector('.hero-list');
 const voiceListEl = document.querySelector('.voice-list-section');
 const transcriptEl = document.querySelector('.transcript-section');
 
+const HERO_DATA = Array.isArray(window.HERO_DATA) ? window.HERO_DATA : [];
+window.HERO_DATA = HERO_DATA;
+
+const ELEMENT_STYLES = {
+    water: { color: "#4facfe", icon: "💧" },
+    fire: { color: "#fa709a", icon: "🔥" },
+    earth: { color: "#43e97b", icon: "🌿" },
+    light: { color: "#fee140", icon: "✨" },
+    dark: { color: "#764ba2", icon: "🌑" }
+};
+
 // State
 let currentHero = null;
 let currentVoice = null;

@@ -278,10 +278,9 @@ const JOHAN_DATA = [
     }
 ];
 
-if (typeof window !== "undefined" && Array.isArray(window.HERO_DATA)) {
-    const lucilicaIndex = HERO_DATA.findIndex(function (hero) {
-        return hero && hero.id === "dark_lucilica";
-    });
-    const insertIndex = lucilicaIndex === -1 ? HERO_DATA.length : lucilicaIndex + 1;
-    HERO_DATA.splice(insertIndex, 0, ...JOHAN_DATA);
+if (typeof window !== "undefined") {
+    if (!Array.isArray(window.HERO_DATA)) {
+        window.HERO_DATA = [];
+    }
+    window.HERO_DATA.push(...JOHAN_DATA);
 }

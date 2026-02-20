@@ -244,3 +244,10 @@ const MIRIANDE_DATA = [
 //        ]
 //    }
 ];
+
+if (typeof window !== "undefined") {
+    if (!Array.isArray(window.HERO_DATA)) {
+        window.HERO_DATA = [];
+    }
+    window.HERO_DATA.push(...MIRIANDE_DATA);
+}
