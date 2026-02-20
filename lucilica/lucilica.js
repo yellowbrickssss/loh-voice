@@ -223,6 +223,15 @@ const LUCILICA_DATA = [
                 audio: "lucilica/lucil (36).mp3"
             }
         ]
+    },
+        {
+        id: "earth_lucilica",
+        name: "루실리카",
+        element: "earth",
+        title: "타협을 거부하는 의지",
+        image: "lucilica/earth_lucilica.png",
+        voices: [
+        ]
     }
 ];
 

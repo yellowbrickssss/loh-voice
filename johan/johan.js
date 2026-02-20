@@ -274,6 +274,234 @@ const JOHAN_DATA = [
         title: "악을 심판하는 자",
         image: "johan/dark_johan/dark_johan.png",
         voices: [
+                        {
+                id: "v_auto_1771575706",
+                label: "자기소개",
+                transcript: "제국의 검이었던, 요한 발켄슈트입니다.",
+                audio: "johan/dark_johan/어둠요한 자기소개.mp3"
+            },
+            {
+                id: "v_auto_1771575769",
+                label: "영웅 영입 1",
+                transcript: "요한 발켄슈트, 지금부터 당신의 정의를 바로 세우겠습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 영입 1.mp3"
+            },
+            {
+                id: "v_auto_1771575800",
+                label: "영웅 영입 2",
+                transcript: "갈루스의 요한, 이제, 당신을 섬기겠습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 영입 2.mp3"
+            },
+            {
+                id: "v_auto_1771575832",
+                label: "영웅 초월 1",
+                transcript: "노, 놀랍군요.",
+                audio: "johan/dark_johan/어둠요한 영웅 초월 1.mp3"
+            },
+            {
+                id: "v_auto_1771575845",
+                label: "영웅 초월 2",
+                transcript: "달라진 기분이 듭니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 초월 2.mp3"
+            },
+            {
+                id: "v_auto_1771575873",
+                label: "영웅 각성 1",
+                transcript: "뭐든지 할 수 있을 것 같군요.",
+                audio: "johan/dark_johan/어둠요한 영웅 각성 1.mp3"
+            },
+            {
+                id: "v_auto_1771575917",
+                label: "영웅 각성 2",
+                transcript: "호의에 감사드립니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 각성 2.mp3"
+            },
+            {
+                id: "v_auto_1771575942",
+                label: "영웅 각성 3",
+                transcript: "무슨 속셈입니까?",
+                audio: "johan/dark_johan/어둠요한 영웅 각성 3.mp3"
+            },
+                        {
+                id: "v_auto_1771576904",
+                label: "영웅 화면 1",
+                transcript: "정의 안에는, 분노가 있습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 1.mp3"
+            },
+            {
+                id: "v_auto_1771576965",
+                label: "영웅 화면 2",
+                transcript: "황제에게 구원 받았고, 황제의 날에 검을 켜는 자, 요한입니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 2.mp3"
+            },
+            {
+                id: "v_auto_1771577060",
+                label: "영웅 화면 3",
+                transcript: "제가 옳다고 생각하는 길을 걷겠습니다. 길이 없다면, 만들겠습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 3.mp3"
+            },
+            {
+                id: "v_auto_1771577096",
+                label: "영웅 화면 4",
+                transcript: "정의의 열매는 화평입니다. 정의의 결과는, 영원한 평화입니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 4.mp3"
+            },
+            {
+                id: "v_auto_1771577137",
+                label: "영웅 화면 5",
+                transcript: "선한 자를 위해 헌신하고 희생하는 것이야말로, 값진 일입니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 5.mp3"
+            },
+            {
+                id: "v_auto_1771577176",
+                label: "영웅 화면 6",
+                transcript: "불의한 자에게는, 마땅한 징벌이 내려져야 합니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 6.mp3"
+            },
+            {
+                id: "v_auto_1771577200",
+                label: "영웅 화면 7",
+                transcript: "악을 배제하는 것이, 선이지 않겠습니까?",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 7.mp3"
+            },
+            {
+                id: "v_auto_1771577242",
+                label: "영웅 화면 8",
+                transcript: "모든 이가 규범과 도덕을 따른다면 그것이 이상적이겠죠. 하지만, 그렇지 않다는 점이 문제입니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 8.mp3"
+            },
+            {
+                id: "v_auto_1771577273",
+                label: "영웅 화면 9",
+                transcript: "사람은 변하지 않습니다. 초범이라 할지라도 엄격하게 처벌해야 하는 이유죠.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 9.mp3"
+            },
+            {
+                id: "v_auto_1771577315",
+                label: "영웅 화면 10",
+                transcript: "제국의 목표는 옳았습니다. 네, 단언할 수 있습니다. 하지만 그 방식은…. 잘못되었다고 생각합니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 10.mp3"
+            },
+                        {
+                id: "v_auto_1771580498",
+                label: "영웅 화면 11",
+                transcript: "로드께서 제게 기회를 주시는 건 이해할 수 있습니다. 제 정의와 로드의 정의는 다를 테니까요. 하지만 제가 정한 길에서 몸을 돌릴 수는 없습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 11.mp3"
+            },
+            {
+                id: "v_auto_1771580534",
+                label: "영웅 화면 12",
+                transcript: "프람, 저는 당신이 아는 사람이 아닙니다. 억지로 친하려 하지 않아도 됩니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 12.mp3"
+            },
+            {
+                id: "v_auto_1771580584",
+                label: "영웅 화면 13",
+                transcript: "저는 갈루스 제국의 황제에게 구원받았고, 제 삶은 그때부터 시작되었습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 13.mp3"
+            },
+                        {
+                id: "v_auto_1771584612",
+                label: "영웅 화면 14",
+                transcript: "카르티스 님의 의지는 진실했고, 의지를 현실할 힘도 가지고 있었습니다. 그런 분이 어째서….",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 14.mp3"
+            },
+            {
+                id: "v_auto_1771584660",
+                label: "영웅 화면 15",
+                transcript: "제가 틀렸을 수도 있다는 생각은 많이 해 봤습니다. 그리고 옳은 방향이 무엇인지는, 그 이상으로 고민했었죠. 결론적으로, 저는, 제가 할 수 있는 일을 하겠습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 15.mp3"
+            },
+            {
+                id: "v_auto_1771584692",
+                label: "영웅 화면 16",
+                transcript: "안경 말씀이십니까? 써본 적, 없습니다. 왜, 왜 그러시죠?",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 16.mp3"
+            },
+            {
+                id: "v_auto_1771584721",
+                label: "영웅 화면 17",
+                transcript: "다른 누군가와 비교되는 것은 불쾌하군요. 저는 스스로에 대한 확신을 가지고 살아왔습니다. 제 삶은 누군가를 대체하기 위한 것이 아닙니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 17.mp3"
+            },
+            {
+                id: "v_auto_1771584759",
+                label: "영웅 화면 18",
+                transcript: "헷갈릴 수 있다는 건 인정합니다, 샬롯 경. 하지만 다음부터 뒤에 매달리는 것은 삼가 주십시오.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 18.mp3"
+            },
+            {
+                id: "v_auto_1771584798",
+                label: "영웅 화면 19",
+                transcript: "나는 당신이 아니야. 당신도 내가 아니고. 그 외에 다른 할 말 있나?",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 19.mp3"
+            },
+            {
+                id: "v_auto_1771584851",
+                label: "영웅 화면 20",
+                transcript: "내가 이해한다면 거짓말이겠죠. 하지만 맹세하겠습니다. 저는, 당신과 같은 일을 겪는 사람이 나타나지 않도록, 일생 동안 노력하겠습니다. 즈라한 경.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 20.mp3"
+            },
+            {
+                id: "v_auto_1771584929",
+                label: "영웅 화면 21",
+                transcript: "생각할 시간에 행동하는 것이 낫지 않습니까? 내가 고민하는 순간에도, 어딘가에서는 불의가 발생하고 있을 텐데.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 21.mp3"
+            },
+            {
+                id: "v_auto_1771584972",
+                label: "영웅 화면 22",
+                transcript: "가끔 저를 바라보는 눈빛에서, 다른 이를 생각하는 마음이 느껴집니다. 제가 모를 거라 생각하셨습니까?",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 22.mp3"
+            },
+            {
+                id: "v_auto_1771585024",
+                label: "영웅 화면 23",
+                transcript: "나인, 별 일 없습니까? …다행입니다. 항상 경계하는 마음을 늦추지 마시고 겉으로는 웃으십시오.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 23.mp3"
+            },
+            {
+                id: "v_auto_1771585068",
+                label: "영웅 화면 24",
+                transcript: "바레타, 행복해 보이는군요. 당신이 추구하던 정의는, 이루었습니까?",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 24.mp3"
+            },
+            {
+                id: "v_auto_1771585100",
+                label: "영웅 화면 25",
+                transcript: "앞으로 무엇을 할지는 제가 정하겠습니다. 로드께서, 말씀하셨듯이요.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 25.mp3"
+            },
+            {
+                id: "v_auto_1771585156",
+                label: "영웅 화면 26",
+                transcript: "스스로 구원을 선택할 수 있는 사람이 있겠습니까? 그게 아니라서, 의미가 있는 겁니다. 그러니까 내 삶은, 그때부터…. 그렇게 정해져 있었다고….",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 26.mp3"
+            },
+            {
+                id: "v_auto_1771585198",
+                label: "영웅 화면 27",
+                transcript: "제국에서 불렸던 이명은 광명의 기사였죠. 상징성이 있기에 이름을 계승하는 형태입니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 27.mp3"
+            },
+            {
+                id: "v_auto_1771585252",
+                label: "영웅 화면 28",
+                transcript: "왜 자꾸, 다들 저를 돌보려 하는 것처럼 느껴지는지 모르겠습니다. 제가 이상합니까? 굳이 다른 이들과 관계를 쌓지 않는 쪽이 편한 사람도 있습니다. 루인 경처럼 사무적으로 대해주는 편이, 훨씬 나으니까요.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 28.mp3"
+            },
+            {
+                id: "v_auto_1771585283",
+                label: "영웅 화면 29",
+                transcript: "저 또한 제국의 부역자였기에, 그 죄에서 자유로울 수는 없습니다. 그 대가를 치를 준비는, 항상 되어 있습니다.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 29.mp3"
+            },
+            {
+                id: "v_auto_1771585313",
+                label: "영웅 화면 30",
+                transcript: "나는 누군가의 대체품도, 모조품도 아니야.",
+                audio: "johan/dark_johan/어둠요한 영웅 화면 30.mp3"
+            }
         ]
     }
 ];
