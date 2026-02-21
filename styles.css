@@ -49,6 +49,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    padding-bottom: 80px;
     cursor: url("cursor/커서/감동란님 기본.ani"),
             url("cursor/원본 파일/감동란님 기본.png"),
             auto;
@@ -378,7 +379,7 @@ body {
     position: absolute;
     right: 16px;
     bottom: 16px;
-    width: 280px;
+    width: min(280px, calc(100vw - 32px));
     display: flex;
     flex-direction: column;
     gap: 6px;
@@ -421,7 +422,7 @@ body {
     transition: width 0.2s ease;
 }
 .footer-spacer {
-    position: absolute;
+    position: fixed;
     left: 0;
     right: 0;
     bottom: 0;
@@ -434,6 +435,7 @@ body {
     flex-direction: column;
     align-items: center;
     pointer-events: auto;
+    width: 100%;
     padding: 20px 0 24px;
 }
 .bottom-twitter {
@@ -812,7 +814,7 @@ body {
 .footer-section { margin-top: 24px; display: flex; align-items: center; gap: 12px; }
 .footer-left { color: var(--text-main); font-size: 13px; opacity: 0.8; }
 .footer-right { margin-left: auto; display: flex; align-items: center; }
-.footer-section .upload-progress { position: static; width: clamp(180px, 40vw, 360px); align-items: flex-start; }
+.footer-section .upload-progress { position: static; width: 100%; align-items: flex-start; }
 
 .quote-sheet {
     min-width: 560px;
@@ -1051,6 +1053,7 @@ body {
 }
 .voice-column .receipt-toggle-btn {
     margin-top: 20px;
+    margin-bottom: 20px;
     align-self: flex-start;
 }
 .receipt-toggle-btn:hover {
