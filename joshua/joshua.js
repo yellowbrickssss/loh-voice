@@ -149,6 +149,114 @@ const JOSHUA_DATA = [
                 label: "영웅 화면 17",
                 transcript: "월급만큼의 일은 했습니다! 그 이상은, 더 많은 월급을 받는 이들에게 맡기도록 하죠.",
                 audio: "joshua/joshua (23).mp3"
+            },
+                        {
+                id: "v_auto_1771649862",
+                label: "영웅 화면 18",
+                transcript: "보람따위 됐으니까 야근 수당이나 주시죠.",
+                audio: "joshua/joshua (24).mp3"
+            },
+            {
+                id: "v_auto_1771649931",
+                label: "영웅 화면 19",
+                transcript: "월요병을 막기 위해서는, 일요일에 출근해 잠깐 일하면 도움이 된다고 하더군요. 흐흐흑, 흐하하하!",
+                audio: "joshua/joshua (25).mp3"
+            },
+            {
+                id: "v_auto_1771649962",
+                label: "영웅 화면 20",
+                transcript: "먼저 퇴근하겠습니다!",
+                audio: "joshua/joshua (26).mp3"
+            },
+            {
+                id: "v_auto_1771650004",
+                label: "영웅 화면 21",
+                transcript: "일이 더 있게 되면, 루인 경이 알아서 처리해 주실 겁니다!",
+                audio: "joshua/joshua (27).mp3"
+            },
+            {
+                id: "v_auto_1771650062",
+                label: "영웅 화면 22",
+                transcript: "바레타. 예전에는 유명한 암살단의 단주였습니다. 제국에 고용된 후로는 집행부 소속으로 활동하다가 8검으로 발탁되었죠. '상징성'이 있었으니까요.",
+                audio: "joshua/joshua (28).mp3"
+            },
+            {
+                id: "v_auto_1771650109",
+                label: "영웅 화면 23",
+                transcript: "프라우…. 결국 먼저 퇴근했구나, 이 배신자…!",
+                audio: "joshua/joshua (29).mp3"
+            },
+            {
+                id: "v_auto_1771650145",
+                label: "영웅 화면 24",
+                transcript: "같은 8검이었다고 해도, 그다지 안면이 있는 편은 아닙니다. 애초에 임무가 워낙 달랐으니까요.",
+                audio: "joshua/joshua (30).mp3"
+            },
+            {
+                id: "v_auto_1771650177",
+                label: "영웅 화면 25",
+                transcript: "연주 소리가 들리는군….",
+                audio: "joshua/joshua (31).mp3"
+            },
+            {
+                id: "v_auto_1771650209",
+                label: "영웅 화면 26",
+                transcript: "이미 저지른 일들을, 되돌릴 순 없겠죠.",
+                audio: "joshua/joshua (32).mp3"
+            },
+            {
+                id: "v_auto_1771650275",
+                label: "영웅 화면 27",
+                transcript: "로드…. 파견 구성을 조금 바꿔 주실 순 없습니까…? 어째서 계속! 아…. 아닙니다.",
+                audio: "joshua/joshua (33).mp3"
+            },
+            {
+                id: "v_auto_1771650329",
+                label: "영웅 화면 28",
+                transcript: "저는 루인 경처럼 카페인이 잘 받는 체질이…! 아니란 말입니다.",
+                audio: "joshua/joshua (34).mp3"
+            },
+            {
+                id: "v_auto_1771650386",
+                label: "영웅 화면 29",
+                transcript: "뭡니까? …요한 경? 아. 아, 감사합니다. 안 그래도 식사 시간이 애매하던 차였는데.",
+                audio: "joshua/joshua (35).mp3"
+            },
+            {
+                id: "v_auto_1771650461",
+                label: "영웅 화면 30",
+                transcript: "괜찮습니다. 제 두통은 샬롯 경도 치료할 수 없다고 했습니다. 예? 꾀병 아닙니다! 진짜! …아, 참나, …눈치는 좋아 가지고.",
+                audio: "joshua/joshua (36).mp3"
+            },
+            {
+                id: "v_auto_1771650501",
+                label: "영웅 화면 31",
+                transcript: "튀김 대장이 아니라 특임 대장입니다. 프람 경! 완전히 다르다고요!",
+                audio: "joshua/joshua (37).mp3"
+            },
+            {
+                id: "v_auto_1771650548",
+                label: "영웅 화면 32",
+                transcript: "다수의 고통을 필요로 하는 거대한 선의는, 용납될 수 없겠죠.",
+                audio: "joshua/joshua (38).mp3"
+            },
+            {
+                id: "v_auto_1771650607",
+                label: "영웅 화면 33",
+                transcript: "카르티스, 황제…가 아니었다면, 저는 이미 오래 전부터 세상에 없었을 겁니다. 하지만, 제가 살아남았기 때문에 아주 많은 사람들이 고통 받았네요. 그런 걸 미리 알았다면, 살아남는 쪽을 선택하진 않았을 텐데.",
+                audio: "joshua/joshua (39).mp3"
+            },
+            {
+                id: "v_auto_1771650659",
+                label: "영웅 화면 34",
+                transcript: "나인…. 염력 쓰는 것도 머리가 아프단 말이다. 언제까지고 캐치볼을 해 줄 수는 없다고, 이 꼬맹아!",
+                audio: "joshua/joshua (40).mp3"
+            },
+            {
+                id: "v_auto_1771650704",
+                label: "영웅 화면 35",
+                transcript: "저 요정은 왜…. 제 염력이 안 통하는 겁니까? 이상하지 않아요?",
+                audio: "joshua/joshua (41).mp3"
             }
         ]
     }

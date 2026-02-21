@@ -49,6 +49,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: url("cursor/커서/감동란님 기본.ani"),
+            url("cursor/원본 파일/감동란님 기본.png"),
+            auto;
 }
 
 /* Background Stars/Particles (Subtle) */
@@ -1164,3 +1167,27 @@ body {
     }
 }
 
+button:not(:disabled),
+.hex-container,
+.voice-item,
+.music-item,
+.patch-list-item,
+.receipt-toggle-btn,
+#receiptDownloadBtn,
+.mb-progress-wrap,
+.intro-overlay,
+.hero-arrow,
+.mobile-hero-search-btn,
+.bottom-twitter a {
+    cursor: url("cursor/커서/감동란님 선택.ani"),
+            url("cursor/원본 파일/감동란님 선택.png"),
+            pointer;
+}
+
+input[type="text"],
+textarea,
+.hero-search-input {
+    cursor: url("cursor/커서/감동란님 텍스트.ani"),
+            url("cursor/원본 파일/감동란님 텍스트.png"),
+            text;
+}
