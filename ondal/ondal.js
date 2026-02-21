@@ -203,6 +203,144 @@ const ONDAL_DATA = [
                 label: "영웅 화면 23",
                 transcript: "내가 의리와 신의를 중요하게 생각하는 것과는 다르지. 말했지 않나. 항상 손해를 보면서 살 정도로, '좋은 놈'은 절대 아니라고.",
                 audio: "ondal/ondal_2 (21).mp3"
+            },
+                        {
+                id: "v_auto_1771638681",
+                label: "코스튬 획득 1",
+                transcript: "이런 건…. 처음 입어보는군.",
+                audio: "ondal/대지 온달_코스튬 획득.mp3"
+            },
+            {
+                id: "v_auto_1771638767",
+                label: "코스튬 획득 2",
+                transcript: "이것도, 은혜라 치면 은혜일 테니. 기억해 두지.",
+                audio: "ondal/대지 온달_코스튬 획득 3.mp3"
+            },
+            {
+                id: "v_auto_1771638798",
+                label: "코스튬 획득 3",
+                transcript: "하아, 어울리는지 잘 모르겠군.",
+                audio: "ondal/대지 온달_코스튬 획득 2.mp3"
+            },
+            {
+                id: "v_auto_1771638842",
+                label: "전투 준비 1",
+                transcript: "맡겨 둬라.",
+                audio: "ondal/대지 온달_전투 준비.mp3"
+            },
+            {
+                id: "v_auto_1771638874",
+                label: "전투 준비 2",
+                transcript: "걱정할 것 없다.",
+                audio: "ondal/대지 온달_전투 준비 (1).mp3"
+            },
+            {
+                id: "v_auto_1771638902",
+                label: "전투 준비 3",
+                transcript: "무인은 전장에 서야지.",
+                audio: "ondal/대지 온달_전투 준비 (2).mp3"
+            },
+            {
+                id: "v_auto_1771638935",
+                label: "전투 준비 4",
+                transcript: "세부적인 전술은 맡겨둬.",
+                audio: "ondal/대지 온달_전투 준비 (3).mp3"
+            },
+            {
+                id: "v_auto_1771638961",
+                label: "전투 준비 5",
+                transcript: "기꺼이.",
+                audio: "ondal/대지 온달_전투 준비 (4).mp3"
+            },
+                        {
+                id: "v_auto_1771639154",
+                label: "일반 스킬 1",
+                transcript: "물러서라! 하앗!",
+                audio: "ondal/대지 온달_일반 스킬 1.mp3"
+            },
+            {
+                id: "v_auto_1771639174",
+                label: "일반 스킬 2",
+                transcript: "흠, 어떠냐!",
+                audio: "ondal/대지 온달_일반 스킬 2.mp3"
+            },
+            {
+                id: "v_auto_1771639220",
+                label: "액티브 스킬 1",
+                transcript: "흠, 백절불굴!",
+                audio: "ondal/대지 온달_액티브 스킬 1.mp3"
+            },
+            {
+                id: "v_auto_1771639235",
+                label: "액티브 스킬 2",
+                transcript: "필사즉생!",
+                audio: "ondal/대지 온달_액티브 스킬 2.mp3"
+            },
+            {
+                id: "v_auto_1771639292",
+                label: "버스트 스킬 1",
+                transcript: "무혼이여! 음, 하! 울부짖어라!",
+                audio: "ondal/대지 온달_버스트 스킬 1.mp3"
+            },
+            {
+                id: "v_auto_1771639329",
+                label: "버스트 스킬 2",
+                transcript: "물러서지 않는다, 파천멸혼격! 받아라!",
+                audio: "ondal/대지 온달_버스트 스킬 2.mp3"
+            },
+            {
+                id: "v_auto_1771639366",
+                label: "버스트 스킬 3",
+                transcript: "지금 이곳이, …나의 전장이다!",
+                audio: "ondal/대지 온달_버스트 스킬 3.mp3"
+            },
+            {
+                id: "v_auto_1771639418",
+                label: "지원 요청 1",
+                transcript: "합공하지 않겠나.",
+                audio: "ondal/대지 온달_지원 요청 1.mp3"
+            },
+            {
+                id: "v_auto_1771639437",
+                label: "지원 요청 2",
+                transcript: "뒤를 맡긴다.",
+                audio: "ondal/대지 온달_지원 요청 2.mp3"
+            },
+            {
+                id: "v_auto_1771639463",
+                label: "지원 응답 1",
+                transcript: "기꺼이 돕지.",
+                audio: "ondal/대지 온달_지원 응답 1.mp3"
+            },
+            {
+                id: "v_auto_1771639501",
+                label: "지원 응답 2",
+                transcript: "지금인가.",
+                audio: "ondal/대지 온달_지원 응답 2.mp3"
+            },
+            {
+                id: "v_auto_1771639546",
+                label: "전투 불능 1",
+                transcript: "…있어야 할 곳으로.",
+                audio: "ondal/대지 온달_전투 불능 1.mp3"
+            },
+            {
+                id: "v_auto_1771639656",
+                label: "승리 1",
+                transcript: "하하, 바라는 대로 되었나?",
+                audio: "ondal/대지 온달_승리 1.mp3"
+            },
+            {
+                id: "v_auto_1771639757",
+                label: "승리 2",
+                transcript: "아, 이쯤 했으면 내 부탁도 한 번쯤 들어 주겠지.",
+                audio: "ondal/대지 온달_승리 3.mp3"
+            },
+            {
+                id: "v_auto_1771639804",
+                label: "승리 3",
+                transcript: "하아, 예전 생각나는군.",
+                audio: "ondal/대지 온달_승리 2.mp3"
             }
         ]
     },
