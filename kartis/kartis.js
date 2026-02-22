@@ -9,7 +9,7 @@ const KARTIS_DATA =[
                         {
                 id: "v_auto_1771672712",
                 label: "자기소개",
-                transcript: "이름은 카르티스, 신분은 3황자. 대외적 이미지는? …망나니.",
+                transcript: "이름은 카르티스, 신분은 3왕자. 대외적 이미지는? …망나니!",
                 audio: "kartis/[빛] 왕자 카르티스 자기소개.mp3"
             },
             {

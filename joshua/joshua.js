@@ -42,6 +42,24 @@ const JOSHUA_DATA = [
                 transcript: "몸이 나른하군. 흠, 원래 그랬나?",
                 audio: "joshua/joshua (5).mp3"
             },
+                        {
+                id: "v_auto_1771710039",
+                label: "영웅 각성 1",
+                transcript: "이건…. 괜찮은 느낌이야.",
+                audio: "joshua/[불] 조슈아 영웅 각성 1.mp3"
+            },
+            {
+                id: "v_auto_1771710067",
+                label: "영웅 각성 2",
+                transcript: "뭐지? 왜, 힘이 나는 거지?",
+                audio: "joshua/[불] 조슈아 영웅 각성 2.mp3"
+            },
+            {
+                id: "v_auto_1771710088",
+                label: "영웅 각성 3",
+                transcript: "하아, 나쁘지 않네.",
+                audio: "joshua/[불] 조슈아 영웅 각성 3.mp3"
+            },
             {
                 id: "v_auto_1771247701",
                 label: "타이틀 콜",
@@ -50,13 +68,13 @@ const JOSHUA_DATA = [
             },
             {
                 id: "v_auto_1771247748",
-                label: "영웅화면 1",
+                label: "영웅 화면 1",
                 transcript: "일하기 싫은 게…. 죄는, 아니겠죠?",
                 audio: "joshua/joshua (7).mp3"
             },
             {
                 id: "v_auto_1771247856",
-                label: "영웅화면 2",
+                label: "영웅 화면 2",
                 transcript: "……. 아…! 깜빡, 졸았습니다. 죄송….",
                 audio: "joshua/joshua (8).mp3"
             },
