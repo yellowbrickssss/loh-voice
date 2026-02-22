@@ -593,7 +593,7 @@ body {
 .a11y-info-tooltip p:last-child{margin-bottom:0}
 .a11y-info-wrapper:hover .a11y-info-tooltip,
 .a11y-info-wrapper:focus-within .a11y-info-tooltip{opacity:1;transform:translateY(0);pointer-events:auto}
-.a11y-info-wrapper .mb-btn{cursor:default}
+.a11y-info-wrapper .mb-btn{cursor:inherit}
 .a11y-info-wrapper .mb-btn:hover{cursor:help}
 .mb-btn {
     background: rgba(137,196,244,0.08);
@@ -1199,7 +1199,8 @@ button:not(:disabled),
 .intro-overlay,
 .hero-arrow,
 .mobile-hero-search-btn,
-.bottom-twitter a {
+.bottom-twitter a,
+.lang-toggle-wrap {
     cursor: url("cursor/커서/감동란님 선택.ani"),
             url("cursor/원본 파일/감동란님 선택.png"),
             pointer;
@@ -1211,4 +1212,57 @@ textarea,
     cursor: url("cursor/커서/감동란님 텍스트.ani"),
             url("cursor/원본 파일/감동란님 텍스트.png"),
             text;
+}
+
+/* [New Feature] Language Toggle (Johan) */
+.lang-toggle-wrap {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 0;
+    /* cursor: pointer; handled in shared block above */
+    opacity: 0.8;
+    transition: opacity 0.2s;
+}
+.lang-toggle-wrap:hover {
+    opacity: 1;
+}
+.lang-label {
+    font-size: 12px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: color 0.2s;
+}
+.lang-label.active {
+    color: var(--accent-primary);
+}
+.toggle-switch {
+    width: 32px;
+    height: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 999px;
+    position: relative;
+    transition: background 0.2s;
+}
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 12px;
+    height: 12px;
+    background: var(--text-muted);
+    border-radius: 50%;
+    transition: transform 0.2s, background 0.2s;
+}
+.toggle-switch.checked {
+    background: rgba(137, 196, 244, 0.2);
+}
+.toggle-switch.checked::after {
+    transform: translateX(16px);
+    background: #fff;
 }

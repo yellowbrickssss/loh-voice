@@ -648,6 +648,78 @@ function init() {
         visualizer.attachCanvas(canvas);
         ensureFooterProgress();
         renderUploadProgress();
+
+        // [New Feature] Language Toggle for Johan 11/26
+        const jpVoice = findJpVoice(currentHero.id, voice.label);
+        if (jpVoice) {
+            const metaEl = transcriptEl.querySelector('.quote-meta');
+            const toggleWrap = document.createElement('div');
+            toggleWrap.className = 'lang-toggle-wrap';
+            toggleWrap.innerHTML = `
+                <span class="lang-label active" data-lang="kr">KR</span>
+                <div class="toggle-switch"></div>
+                <span class="lang-label" data-lang="jp">JP</span>
+            `;
+            
+            // Insert at top-right of quote-sheet
+            const quoteSheet = transcriptEl.querySelector('.quote-sheet');
+            if (quoteSheet) {
+                quoteSheet.appendChild(toggleWrap);
+            }
+
+            let isJp = false;
+            const switchEl = toggleWrap.querySelector('.toggle-switch');
+            const labels = toggleWrap.querySelectorAll('.lang-label');
+            const textEl = transcriptEl.querySelector('.quote-text');
+
+            toggleWrap.addEventListener('click', () => {
+                isJp = !isJp;
+                switchEl.classList.toggle('checked', isJp);
+                labels[0].classList.toggle('active', !isJp);
+                labels[1].classList.toggle('active', isJp);
+
+                // 0.1s delay before update & play
+                setTimeout(() => {
+                    // Update Text
+                    textEl.innerText = isJp ? `"${jpVoice.transcript}"` : `"${voice.transcript}"`;
+                    
+                    // Update Hero Name (johan -> JOHAN)
+                    const nameEl = transcriptEl.querySelector('.char-name');
+                    if (nameEl) {
+                        if (isJp) {
+                            // Extract name from ID (e.g. 'light_johan' -> 'JOHAN')
+                            const parts = currentHero.id.split('_');
+                            const enName = parts.length > 1 ? parts[1].toUpperCase() : currentHero.id.toUpperCase();
+                            nameEl.innerText = enName;
+                        } else {
+                            nameEl.innerText = currentHero.name;
+                        }
+                    }
+
+                    // Update Label
+                    const metaEl = transcriptEl.querySelector('.quote-meta');
+                    if (metaEl) {
+                        const currentLabel = isJp ? jpVoice.label : voice.label;
+                        metaEl.innerText = `${currentLabel} | ${currentHero.element.toUpperCase()}`;
+                    }
+
+                    // Play Audio (Toggle acts as Play button)
+                    visualizer.playVoice(isJp ? jpVoice : voice);
+                }, 100);
+            });
+        }
+    }
+
+    function findJpVoice(heroId, label) {
+        if (heroId !== 'light_johan') return null;
+        if (!window.JOHAN_JP_DATA) return null;
+        
+        let target = "";
+        if (label === "영웅 화면 11") target = "英雄画面 11";
+        else if (label === "영웅 화면 26") target = "英雄画面 26";
+        
+        if (!target) return null;
+        return window.JOHAN_JP_DATA.find(v => v.label === target);
     }
 
     const RECEIPT_ELEMENT_LABELS = {
