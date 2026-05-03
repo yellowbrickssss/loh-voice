@@ -47,21 +47,30 @@ body {
 /* Repeat One Icon Styling */
 .lp-ctrl-side.repeat-one {
     position: relative;
+    opacity: 1;
+    color: var(--accent-primary);
+    text-shadow: 0 0 8px var(--accent-glow);
 }
 .lp-ctrl-side.repeat-one::after {
     content: '1';
     position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 4px;
+    right: 2px;
+    width: 13px;
+    height: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
     font-size: 8px;
     font-weight: 900;
     font-family: 'Share Tech Mono', monospace;
-    color: var(--accent-primary);
-    background: transparent;
+    color: var(--text-main);
+    background: rgba(137, 196, 244, 0.18);
+    border: 1px solid rgba(137, 196, 244, 0.35);
     pointer-events: none;
-    text-shadow: 0 0 2px #000;
-    margin-top: 1px; /* Fine-tune vertical alignment */
+    text-shadow: none;
+    box-shadow: 0 0 10px rgba(137, 196, 244, 0.18);
 }
 .lp-ctrl-side.repeat-one i {
     opacity: 1;
@@ -89,24 +98,25 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
 
 .player-wrapper {
     width: 100%;
-    max-width: 1400px; /* Wider for 2 columns */
+    max-width: 980px;
     padding: 60px;
     margin: 0 auto;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
-    align-items: center; /* Align center */
-    gap: 60px;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
     position: relative;
     z-index: 1;
 }
 
 #sect-playlist {
-    max-width: 420px;
+    max-width: 560px;
     width: 100%;
     text-align: center;
     padding: 0;
     box-sizing: border-box;
+    margin: 0 auto;
 }
 #sect-playlist h2 {
     letter-spacing: 4px;
@@ -124,8 +134,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     width: 100%;
     overflow: visible;
     contain: none;
-    
-    /* Refined Glass Style */
+
     background: var(--glass-surface);
     border: 1px solid var(--glass-border);
     border-radius: 20px;
@@ -143,7 +152,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
 .gramophone-body {
     position: absolute;
     z-index: 4;
-    right: -20px; /* Adjusted position */
+    right: -20px;
     top: 50%;
     transform: translateY(-50%);
     width: 280px;
@@ -159,7 +168,6 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     align-items: center;
     width: 100%;
     margin-bottom: 25px;
-    /* transform: translate(20px, 20px); removed for center alignment */
 }
 
 .lp-record-with-soundwave {
@@ -209,7 +217,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     --lp-base: #3a2818;
     --lp-dark: #1a100a;
     position: absolute;
-    left: 50%; /* Default hidden/centered state */
+    left: 50%;
     top: 50%;
     margin-left: -90px;
     margin-top: -90px;
@@ -234,17 +242,18 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     box-shadow:
         inset 0 0 60px rgba(0,0,0,0.4),
         0 5px 20px rgba(0,0,0,0.6);
-    animation: lpSpin 1.8s linear infinite;
-    animation-play-state: paused;
-    transition: left 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    transform: translateX(0);
+    transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.08);
 }
-.lp-player.playing .lp-disc { 
-    animation-play-state: running; 
-    left: 35%; /* Slide out to the left (was 65%) */
+.lp-player.sliding .lp-disc {
+    transform: translateX(-52px);
+}
+.lp-player.playing .lp-disc {
+    animation: lpSpin 1.8s linear infinite;
 }
 @keyframes lpSpin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from { transform: translateX(-52px) rotate(0deg); }
+    to { transform: translateX(-52px) rotate(360deg); }
 }
 
 .lp-disc::before {
@@ -290,8 +299,8 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
 
 .lp-track-info {
     text-align: center;
-    margin-bottom: 25px;
-    padding: 0 20px;
+    margin-bottom: 18px;
+    padding: 0 10px;
 }
 .lp-title {
     font-size: 1.2rem;
@@ -324,6 +333,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     cursor: pointer;
     position: relative;
     overflow: visible; /* Changed from hidden to visible for handle */
+    touch-action: none;
 }
 .lp-progress-fill {
     width: 0%;
@@ -335,17 +345,26 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     position: relative; /* For handle positioning */
 }
 .lp-progress-fill::after {
-    content: '';
+    content: none;
+}
+.lp-progress-handle {
     position: absolute;
-    right: -6px;
     top: 50%;
-    transform: translateY(-50%);
+    left: 0%;
+    transform: translate(-50%, -50%);
     width: 12px;
     height: 12px;
     background: #fff;
     border-radius: 50%;
     box-shadow: 0 0 4px rgba(0,0,0,0.5);
     z-index: 10;
+    cursor: pointer;
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+.lp-progress-bar.dragging .lp-progress-handle,
+.lp-progress-bar:hover .lp-progress-handle {
+    transform: translate(-50%, -50%) scale(1.08);
+    box-shadow: 0 0 8px var(--accent-glow);
 }
 .lp-progress-time {
     display: flex;
@@ -407,14 +426,20 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
 }
 
 .lp-playlist {
-    border-top: 1px solid rgba(255,255,255,0.1);
-    max-height: 0;
-    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.08);
+    max-height: 420px;
+    overflow-y: auto;
+    overflow-x: hidden;
     transition: max-height 0.4s ease;
-    background: rgba(0,0,0,0.2);
-    border-radius: 0 0 12px 12px;
+    background: rgba(6, 10, 18, 0.4);
+    border-radius: 16px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 12px 10px 18px;
 }
-.lp-player:hover .lp-playlist { max-height: 250px; overflow-y: auto; }
+.lp-player:hover .lp-playlist { max-height: 420px; overflow-y: auto; }
 
 /* Scrollbar for playlist */
 .lp-playlist::-webkit-scrollbar { width: 4px; }
@@ -425,34 +450,104 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
 
 .lp-pl-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 12px 20px;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
+    gap: 0;
+    padding: 0;
     cursor: pointer;
-    transition: background 0.2s;
+    transition: background 0.2s, transform 0.2s;
     font-size: 0.95rem;
     color: var(--text-muted);
+    width: 96px;
+    min-height: 126px;
+    margin-bottom: -74px;
+    border-bottom: none;
+    background: transparent !important;
+    position: relative;
+    z-index: var(--stack-z, 1);
 }
-.lp-pl-item:last-child { border-bottom: none; }
+.lp-pl-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 12px;
+}
 .lp-pl-item:hover { 
-    background: rgba(255,255,255,0.05); 
+    background: transparent !important; 
     color: var(--text-main);
+    transform: translateY(-10px);
+    z-index: var(--stack-z, 1);
 }
 .lp-pl-item.active {
-    background: rgba(137, 196, 244, 0.1);
-    font-weight: 500;
+    background: transparent !important;
     color: var(--accent-primary);
-    border-left: 3px solid var(--accent-primary);
+    border-left: none;
+    transform: translateY(-22px);
+    z-index: var(--stack-z, 1);
 }
-.lp-pl-idx {
-    width: 24px;
-    font-size: 0.8rem;
-    color: rgba(255,255,255,0.3);
-    margin-right: 10px;
+
+.lp-pl-thumb {
+    width: 96px;
+    height: 96px;
+    object-fit: cover;
+    border-radius: 4px;
+    flex-shrink: 0;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    transition: box-shadow 0.22s ease, filter 0.22s ease;
+}
+
+.lp-pl-item:hover .lp-pl-thumb {
+    box-shadow:
+        0 10px 18px rgba(0, 0, 0, 0.34),
+        0 0 0 1px rgba(255, 255, 255, 0.08);
+    filter: brightness(1.06);
+}
+
+.lp-pl-item.active .lp-pl-thumb {
+    box-shadow:
+        0 14px 26px rgba(137, 196, 244, 0.24),
+        0 5px 12px rgba(0, 0, 0, 0.28);
+    filter: brightness(1.08);
+}
+
+.lp-pl-text {
+    width: 100%;
+    height: 12px;
+    margin-top: 4px;
+    min-width: 0;
+    flex: 0 0 auto;
+    text-align: left;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+.lp-pl-meta {
+    display: flex;
+    align-items: baseline;
+    gap: 6px;
+}
+
+.lp-pl-num {
+    font-size: 0.72rem;
+    color: rgba(255,255,255,0.35);
     font-family: 'Share Tech Mono', monospace;
 }
-.lp-pl-info { display: flex; flex-direction: column; }
-.lp-pl-title { font-size: 0.95rem; margin-bottom: 2px; }
+
+.lp-pl-title {
+    font-size: 0.92rem;
+    margin-bottom: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.lp-pl-artist {
+    font-size: 0.74rem;
+    color: rgba(255,255,255,0.48);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 /* =========================================
    RESPONSIVE DESIGN (Mobile & Tablet)
    ========================================= */
@@ -460,8 +555,9 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     .player-wrapper {
         flex-direction: column;
         padding: 20px;
-        gap: 40px;
-        justify-content: flex-start;
+        gap: 0;
+        justify-content: center;
+        align-items: center;
     }
 
     #sect-playlist {
@@ -476,6 +572,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     .lp-left-section {
         margin-bottom: 20px;
     }
+
 }
 
 @media (max-width: 480px) {
@@ -485,7 +582,7 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
     
     .player-wrapper {
         padding: 15px;
-        gap: 30px;
+        gap: 0;
     }
     
     .gramophone-body {
@@ -505,6 +602,15 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
         margin-left: -70px;
         margin-top: -70px;
     }
+
+    .lp-player.sliding .lp-disc {
+        transform: translateX(-36px);
+    }
+
+    @keyframes lpSpin {
+        from { transform: translateX(-36px) rotate(0deg); }
+        to { transform: translateX(-36px) rotate(360deg); }
+    }
     
     .lp-controls {
         gap: 15px;
@@ -514,5 +620,175 @@ a, button, .knob-dial, .lp-progress-bar, .lp-pl-item, .crt-screen {
         width: 48px;
         height: 48px;
         font-size: 1.2rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .player-wrapper {
+        align-items: flex-start;
+        justify-content: center;
+    }
+
+    #sect-playlist {
+        max-width: 860px;
+    }
+
+    .lp-player {
+        display: flex;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 44px;
+        padding: 30px 26px;
+    }
+
+    .lp-left-section {
+        width: 420px;
+        flex-shrink: 0;
+        margin-bottom: 0;
+    }
+
+    .lp-record-with-soundwave {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto 20px;
+    }
+
+    .gramophone-body {
+        width: 280px;
+        height: 280px;
+        right: -20px;
+    }
+
+    .lp-disc {
+        width: 180px;
+        height: 180px;
+        left: 50%;
+        margin-left: -90px;
+        margin-top: -90px;
+    }
+
+    .lp-playlist {
+        width: 166px;
+        min-width: 166px;
+        max-width: 166px;
+        height: 620px;
+        max-height: none;
+        padding: 18px 12px 22px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        border-radius: 6px;
+        background:
+            linear-gradient(180deg, #5b3c31 0%, #3a241d 100%);
+        border: 10px solid #6f4c3f;
+        box-shadow:
+            0 18px 40px rgba(0, 0, 0, 0.45),
+            inset 0 10px 20px rgba(255, 255, 255, 0.04),
+            inset 0 -14px 28px rgba(0, 0, 0, 0.42);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: relative;
+    }
+
+    .lp-player:hover .lp-playlist {
+        max-height: none;
+        overflow-y: auto;
+    }
+
+    .lp-playlist::before {
+        content: '';
+        position: absolute;
+        top: 8px;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        pointer-events: none;
+    }
+
+    .lp-playlist::-webkit-scrollbar {
+        width: 6px;
+    }
+
+    .lp-playlist::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.18);
+        border-radius: 4px;
+    }
+
+    .lp-playlist::-webkit-scrollbar-thumb {
+        background: rgba(225, 211, 198, 0.35);
+        border-radius: 4px;
+    }
+
+    .lp-pl-item {
+        width: 118px;
+        min-height: 148px;
+        flex-direction: column;
+        align-items: center;
+        gap: 0;
+        padding: 0;
+        margin-bottom: -84px;
+        border-bottom: none;
+        border-left: none !important;
+        background: transparent !important;
+        position: relative;
+        z-index: var(--stack-z, 1);
+        transform: translateY(0);
+        transition: transform 0.22s ease;
+    }
+
+    .lp-pl-item:last-child {
+        margin-bottom: 0;
+        padding-bottom: 14px;
+    }
+
+    .lp-pl-item:hover {
+        background: transparent !important;
+        transform: translateY(-10px);
+        z-index: var(--stack-z, 1);
+    }
+
+    .lp-pl-item.active {
+        background: transparent !important;
+        transform: translateY(-22px);
+        z-index: var(--stack-z, 1);
+    }
+
+    .lp-pl-thumb {
+        width: 118px;
+        height: 118px;
+        border-radius: 4px;
+        box-shadow:
+            0 8px 18px rgba(0, 0, 0, 0.4),
+            0 2px 6px rgba(0, 0, 0, 0.24),
+            inset -1px 0 4px rgba(0, 0, 0, 0.15);
+    }
+
+    .lp-pl-item.active .lp-pl-thumb {
+        box-shadow:
+            0 12px 24px rgba(137, 196, 244, 0.28),
+            0 4px 10px rgba(0, 0, 0, 0.28);
+    }
+
+    .lp-pl-text {
+        width: 100%;
+        height: 12px;
+        margin-top: 4px;
+        opacity: 0;
+        pointer-events: none;
+        overflow: hidden;
+    }
+
+    .lp-player.sliding .lp-disc {
+        transform: translateX(-52px);
+    }
+
+    @keyframes lpSpin {
+        from { transform: translateX(-52px) rotate(0deg); }
+        to { transform: translateX(-52px) rotate(360deg); }
+    }
+
+    .lp-playlist {
+        max-height: none;
     }
 }

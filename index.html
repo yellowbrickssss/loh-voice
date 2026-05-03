@@ -166,8 +166,8 @@
                 <button class="receipt-toggle-btn" id="receiptToggle" type="button" aria-label="영웅 대사 영수증 열기/닫기">
                     🧾 Entry Permit
                 </button>
-                <button id="moviesToggleBtn" class="receipt-toggle-btn" aria-label="영상 페이지 열기">
-                    🎞 movies
+                <button id="moviesToggleBtn" class="receipt-toggle-btn" aria-label="음악 감상실 열기">
+                    음악 감상실
                 </button>
             </div>
         </div>
@@ -258,10 +258,10 @@
         }
     </script>
 
-    <!-- Movies Modal Overlay -->
+    <!-- Music Room Modal Overlay -->
     <div id="moviesModal" class="movies-modal-overlay" aria-hidden="true" style="display:none;">
         <div class="movies-modal-container">
-            <button id="moviesCloseBtn" class="movies-close-btn" aria-label="Close">
+            <button id="moviesCloseBtn" class="movies-close-btn" aria-label="음악 감상실 닫기">
                 <svg class="icon" viewBox="0 0 24 24">
                     <line x1="6" y1="6" x2="18" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
                     <line x1="18" y1="6" x2="6" y2="18" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line>
@@ -336,13 +336,7 @@
             if (moviesBtn && moviesModal && moviesCloseBtn) {
                 // Open
                 moviesBtn.addEventListener('click', () => {
-                    moviesModal.style.display = 'flex';
-                    moviesModal.setAttribute('aria-hidden', 'false');
-                    document.body.style.overflow = 'hidden'; // Lock background scroll
-                    
-                    if (!moviesFrame.getAttribute('src')) {
-                        moviesFrame.setAttribute('src', '출격영상/movies.html');
-                    }
+                    window.location.href = 'music_room';
                 });
                 
                 // Close

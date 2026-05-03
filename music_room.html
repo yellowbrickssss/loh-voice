@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Movies - Hero Intro</title>
+    <base href="./herovideo/">
+    <title>Music Room - LOH Voice</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -65,25 +66,19 @@
         }
     </style>
     <link rel="stylesheet" href="css/movies_lp.css">
-    <link rel="stylesheet" href="css/movies_vhs.css">
 </head>
 <body>
     <div class="stars"></div>
     <div class="player-wrapper">
-        
-        <!-- Left: LP Player & List -->
         <section id="sect-playlist">
-            <h2>MOVIES - HERO INTRO</h2>
-            
+            <h2>MUSIC ROOM</h2>
             <div class="lp-player" id="lp-player">
                 <div class="lp-corner-tl"></div>
                 <div class="lp-corner-tr"></div>
                 <div class="lp-corner-bl"></div>
                 <div class="lp-corner-br"></div>
-                
                 <div class="lp-left-section">
                     <div class="lp-record-with-soundwave">
-                        <!-- Soundwave Canvas (Optional, depends on soundwave_all.js support for video) -->
                         <div class="lp-soundwave lp-soundwave-ring" id="lp-soundwave"></div>
                         <div class="lp-record-container">
                             <img src="images/pngimg.com%20-%20gramophone_PNG24.png" alt="Gramophone" class="gramophone-body">
@@ -94,24 +89,21 @@
                             </div>
                         </div>
                     </div>
-                    
                     <div class="lp-track-info">
                         <div class="lp-title" id="p-title">Track Title</div>
                         <div class="lp-artist" id="p-artist">Artist Name</div>
                     </div>
-                    
                     <div class="lp-progress">
                         <div class="lp-progress-bar" id="phone-progress-bar" onclick="if(event&&typeof event.clientX==='number')seekPlaylistAudio(event.clientX)">
                             <div class="lp-progress-fill" id="phone-progress"></div>
+                            <div class="lp-progress-handle" id="phone-progress-handle"></div>
                         </div>
                         <div class="lp-progress-time">
                             <span id="phone-current-time">0:00</span>
                             <span id="phone-total-time">0:00</span>
                         </div>
                     </div>
-
                     <div class="lp-controls">
-                        <!-- Added Shuffle/Repeat Toggles for completeness -->
                         <button class="lp-ctrl-side" onclick="window.toggleShuffle && window.toggleShuffle()"><i class="fa-solid fa-shuffle"></i></button>
                         <button class="lp-ctrl-side" onclick="prevTrack()"><i class="fa-solid fa-backward-step"></i></button>
                         <button class="lp-ctrl-main" id="p-play-btn" onclick="togglePlaylistAudio()"><i class="fa-solid fa-play"></i></button>
@@ -119,60 +111,12 @@
                         <button class="lp-ctrl-side" onclick="window.toggleRepeat && window.toggleRepeat()"><i class="fa-solid fa-repeat"></i></button>
                     </div>
                 </div>
-                
                 <div class="lp-playlist" id="lp-playlist-list">
-                    <!-- JS Generated -->
                 </div>
-
             </div>
         </section>
-
-        <!-- Right: VHS TV (Asset Player) -->
-        <div class="tv-section-wrapper">
-            <div class="wood-tv-casing">
-                <div class="screen-side">
-                    <div class="bezel-frame">
-                        <div class="crt-screen">
-                            <video id="tv-video-player" class="tv-content" playsinline></video>
-                            
-                            <div class="screen-overlay">
-                                <div class="static-noise"></div>
-                                <div class="scanlines"></div>
-                                <div class="reflection"></div>
-                                <div class="vignette"></div>
-                            </div>
-
-                            <div class="tv-subtitle-container">
-                                <p id="tv-subtitle-text"></p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="brand-plate">LOHVOICE</div>
-                </div>
-                
-                <div class="control-side">
-                    <div class="power-section">
-                        <div class="power-btn"></div>
-                        <div class="power-led on"></div>
-                    </div>
-                    <div class="channel-knobs">
-                        <div class="knob-unit">
-                            <div class="knob-dial top"><div class="knob-grip"></div></div>
-                            <span class="knob-label">UHF</span>
-                        </div>
-                        <div class="knob-unit">
-                            <div class="knob-dial bottom"><div class="knob-grip"></div></div>
-                            <span class="knob-label">VHF</span>
-                        </div>
-                    </div>
-                    <div class="speaker-grill"></div>
-                </div>
-            </div>
-        </div>
-
     </div>
-
-    <!-- Scripts -->
+    <audio id="tv-audio-player" preload="metadata"></audio>
     <script src="js/soundwave_all.js"></script>
     <script src="js/movies_asset.js"></script>
     <script src="js/movies_core.js"></script>
