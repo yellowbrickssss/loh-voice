@@ -38,7 +38,8 @@ const MUSIC_PLAYLIST = (window.MUSIC_PLAYLIST && window.MUSIC_PLAYLIST.length)
         { title: "빛의 시작(My First Light)", artist: "수안 (퍼플키스)", src: "music/수안 (퍼플키스)-01-빛의 시작(My First Light).mp3"},
         { title: "Chance (Inst.)", artist: "엔플라잉 (N.Flying)", src: "music/엔플라잉 (N.Flying)-03-Chance (Inst.).mp3"},
         { title: "Eternal Bloom (Korean Version)", artist: "윤마치 (MRCH)", src: "music/윤마치 (MRCH)-01-Eternal Bloom (Korean Version).mp3"},
-        { title: "War Of The Tyrants (마도대전 OST)", artist: "", src: "music/War Of The Tyrants (Edit).wav"},
+        { title: "War Of The Tyrants (마도대전 OST)", artist: "", src: "music/tyrant_war_world.wav"},
+        { title: "War Of The Tyrants (Battle)", artist: "", src: "music/tyrant_war_battle.wav"},
     ];
 const PATCH_NOTES = (window.PATCH_NOTES && window.PATCH_NOTES.length)
     ? window.PATCH_NOTES
