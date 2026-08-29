@@ -280,97 +280,97 @@ const FRAM_DATA =[
                 id: "v_auto_121796722",
                 label: "영웅 화면 38",
                 transcript: "프라우는 진짜 이상한 녀석이지만 가끔 재미도 있지. 진짜 기발한 장난 같은 걸 생각해 낸다고.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면38.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면38.mp3"
             },
             {
                 id: "v_auto_1665061636",
                 label: "영웅 화면 39",
                 transcript: "방랑하는 기사들도 많대. 그런 친구들도 다 아발론에 데려오면 안 돼?",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면39.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면39.mp3"
             },
             {
                 id: "v_auto_1267714514",
                 label: "영웅 화면 40",
                 transcript: "나랑 로드랑 처음 만났을 때가 궁금해? 그럼 오늘 후식으로 나오는 거 다 나한테 양보해, 프라우!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면40.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면40.mp3"
             },
             {
                 id: "v_auto_316183960",
                 label: "영웅 화면 41",
                 transcript: "로드, 지난번에 선물 줬던 애들이 고맙다고 편지를 보내줬어. 같이 읽어보자!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면41.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면41.mp3"
             },
             {
                 id: "v_auto_3602717512",
                 label: "영웅 화면 42",
                 transcript: "하늘에 구름 한 점 없이 맑은 날씨야. 니벨룽겐으로 파견 보내줘, 로드! ...어? 어? 아, 그렇구나. 도토리는 다람쥐들 거니까 내가 너무 많이 가져오면 안 되는 거구나.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면42.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면42.mp3"
             },
             {
                 id: "v_auto_38555696",
                 label: "영웅 화면 43",
                 transcript: "루인이 책을 읽기 좋은 계절이라고 하더라. 정작 자기는 서류만 읽는 것 같던데.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면43.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면43.mp3"
             },
             {
                 id: "v_auto_831589122",
                 label: "영웅 화면 44",
                 transcript: "로드! 자, 이거 로드한테 어울릴 것 같아서 사 왔지. 받는 것도 좋지만 주는 건 더 좋다고!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_영웅화면44.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_영웅화면44.mp3"
             },
             {
                 id: "v_auto_3588161235",
                 label: "전투 준비 1",
                 transcript: "자, 싸울 시간이야.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_전투준비1.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_전투준비1.mp3"
             },
             {
                 id: "v_auto_219690128",
                 label: "전투 준비 2",
                 transcript: "내가 선봉에 설게.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_전투준비2.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_전투준비2.mp3"
             },
             {
                 id: "v_auto_2416752860",
                 label: "전투 준비 5",
                 transcript: "제대로 하고 올게.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_전투준비5.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_전투준비5.mp3"
             },
             {
                 id: "v_auto_142506622",
                 label: "전투 준비 6",
                 transcript: "걱정하지 마, 로드.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_전투준비6.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_전투준비6.mp3"
             },
             {
                 id: "v_auto_1394671467",
                 label: "일반 스킬 1",
                 transcript: "간다!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_일반스킬1.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_일반스킬1.mp3"
             },
             {
                 id: "v_auto_3574497915",
                 label: "지원 요청 1",
                 transcript: "여기야, 여기!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_지원요청1.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_지원요청1.mp3"
             },
             {
                 id: "v_auto_849058581",
                 label: "지원 요청 2",
                 transcript: "자, 가자!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_지원요청2.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_지원요청2.mp3"
             },
             {
                 id: "v_auto_1414444253",
                 label: "지원 응답 1",
                 transcript: "알았어.",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_지원응답1.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_지원응답1.mp3"
             },
             {
                 id: "v_auto_988141313",
                 label: "지원 응답 2",
                 transcript: "좋았어!",
-                audio: "asset/fram/asset/fram/프람 - 물/물-프람_지원응답2.mp3"
+                audio: "asset/fram/프람 - 물/물-프람_지원응답2.mp3"
             }
         ]
     }
