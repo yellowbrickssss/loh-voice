@@ -651,8 +651,8 @@ function init() {
         ensureFooterProgress();
         renderUploadProgress();
 
-        // [New Feature] Language Toggle for Johan 11/26
-        const jpVoice = findJpVoice(currentHero.id, voice.label);
+        // [JP] Language Toggle for Johan voices with matching JP data
+        const jpVoice = findJpVoice(currentHero.id, voice);
         if (jpVoice) {
             const metaEl = transcriptEl.querySelector('.quote-meta');
             const toggleWrap = document.createElement('div');
@@ -712,16 +712,35 @@ function init() {
         }
     }
 
-    function findJpVoice(heroId, label) {
+    function getJpAudioMatchKey(audioPath) {
+        if (!audioPath) return '';
+
+        const fileName = audioPath.split('/').pop() || '';
+        return fileName
+            .replace(/\.[^.]+$/, '')
+            .replace(/^jp_/, '')
+            .replace(/^(빛|어둠|불|대지)\s*요한\s*/, '')
+            .replace(/^요한\s*/, '')
+            .replace(/\s+/g, ' ')
+            .trim();
+    }
+
+    function findJpVoice(heroId, voice) {
         if (heroId !== 'light_johan') return null;
-        if (!window.JOHAN_JP_DATA) return null;
-        
-        let target = "";
-        if (label === "영웅 화면 11") target = "英雄画面 11";
-        else if (label === "영웅 화면 26") target = "英雄画面 26";
-        
-        if (!target) return null;
-        return window.JOHAN_JP_DATA.find(v => v.label === target);
+        if (!window.JOHAN_JP_DATA || !voice) return null;
+
+        const targetKey = getJpAudioMatchKey(voice.audio);
+        if (targetKey) {
+            const jpMatch = window.JOHAN_JP_DATA.find(v => getJpAudioMatchKey(v.audio) === targetKey);
+            if (jpMatch) return jpMatch;
+        }
+
+        const labelCandidates = [voice.label];
+        if (voice.label && !/\s\d+$/.test(voice.label)) {
+            labelCandidates.push(`${voice.label} 1`);
+        }
+
+        return window.JOHAN_JP_DATA.find(v => labelCandidates.includes(v.label)) || null;
     }
 
     const RECEIPT_ELEMENT_LABELS = {
